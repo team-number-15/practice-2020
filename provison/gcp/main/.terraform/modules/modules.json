@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"vpc","Source":"../modules/global","Dir":"../modules/global"},{"Key":"","Source":"","Dir":"."},{"Key":"euw3","Source":"../modules/instance","Dir":"../modules/instance"},{"Key":"use1","Source":"../modules/instance","Dir":"../modules/instance"}]}
+{"Modules":[{"Key":"use1","Source":"../modules/instance","Dir":"../modules/instance"},{"Key":"vpc","Source":"../modules/global","Dir":"../modules/global"},{"Key":"","Source":"","Dir":"."},{"Key":"euw3","Source":"../modules/instance","Dir":"../modules/instance"}]}
