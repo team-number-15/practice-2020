@@ -4,38 +4,113 @@ provider "google" {
 }
 
 module "vpc" {
-  source                  = "../modules/global"
-  env                     = var.var_env
-  company                 = var.var_company
-  var_euw3_public_subnet  = var.euw3_public_subnet
-  var_euw3_private_subnet = var.euw3_private_subnet
-  var_use1_public_subnet  = var.use1_public_subnet
-  var_use1_private_subnet = var.use1_private_subnet
+  source      = "../modules/global"
+  var_env     = var.var_env
+  var_company = var.var_company
+
+  var_euw3_region_name = "europe-west3"
+  var_use1_region_name = "us-east1"
+
+  var_euw3_public_subnet_range  = var.euw3_public_subnet_range
+  var_euw3_private_subnet_range = var.euw3_private_subnet_range
+  var_use1_public_subnet_range  = var.use1_public_subnet_range
+  var_use1_private_subnet_range = var.use1_private_subnet_range
 }
 
-module "use1" {
-  source             = "../modules/instance"
+module "http-load-balancer" {
+  source = "../modules/load-balancer"
+
+  var_global_lb_ip = "global-external-lb-ip"
+
+  var_zones = ["south-carolina", "frankfurt"]
+
+  var_backend_instance_group = {
+    use1-ig = module.instance-group-us-east1.instance_group 
+    euw3-ig = module.instance-group-europe-west3.instance_group 
+  }
+}
+
+module "instance-group-us-east1" {
+  source = "../modules/instance-group"
+
+  var_zone              = "us-east1-b"
+  var_health_check      = google_compute_http_health_check.instance_template.self_link
+  var_version_name      = "south_carolina_v1"
+  var_instance_template = module.use1-django-server-instance-template.self_link
+  var_instance_number   = 1
+}
+
+module "instance-group-europe-west3" {
+  source = "../modules/instance-group"
+
+  var_zone              = "europe-west3-b"
+  var_health_check      = google_compute_http_health_check.instance_template.self_link
+  var_version_name      = "south_carolina_v1"
+  var_instance_template = module.euw3-django-server-instance-template.self_link
+  var_instance_number   = 1
+}
+
+module "use1-django-server-instance-template" {
+  source = "../modules/instance-template"
+
+  var_template_name_prefix = "use1-django-"
+  var_machine_type         = "n1-standard-1"
+  var_region               = "us-east1"
+
   network_self_link  = module.vpc.out_vpc_self_link
-  subnetwork_1       = module.use1.instance_out_public_subnet_name
+  var_public_subnet  = module.vpc.out_use1_public_subnet  # var.use1_public_subnet
+  var_private_subnet = module.vpc.out_use1_private_subnet # var.use1_private_subnet
+}
+
+module "euw3-django-server-instance-template" {
+  source = "../modules/instance-template"
+
+  var_template_name_prefix = "use1-django-"
+  var_machine_type         = "n1-standard-1"
+  var_region               = "europe-west3"
+
+  network_self_link  = module.vpc.out_vpc_self_link
+  var_public_subnet  = module.vpc.out_euw3_public_subnet  # var.euw3_public_subnet
+  var_private_subnet = module.vpc.out_euw3_private_subnet # var.euw3_private_subnet
+}
+
+# continious delivery server 
+module "CD" {
+  source            = "../modules/instance"
+  var_instance_name = "use1-cd-instance-1"
+  network_self_link = module.vpc.out_vpc_self_link
+  # subnetwork_1       = module.CD.instance_out_public_subnet_name
   env                = var.var_env
   company            = var.var_company
   var_region_name    = "us-east1"
-  var_public_subnet  = var.use1_public_subnet
-  var_private_subnet = var.use1_private_subnet
-  var_image          = "centos-7-v20180129"
+  var_public_subnet  = module.vpc.out_use1_public_subnet  # var.use1_public_subnet
+  var_private_subnet = module.vpc.out_use1_private_subnet # var.use1_private_subnet
+  var_image          = "centos-cloud/centos-7"
   instance_number    = 1
 }
 
-module "euw3" {
-  source             = "../modules/instance"
-  network_self_link  = module.vpc.out_vpc_self_link
-  subnetwork_1       = module.euw3.instance_out_public_subnet_name
+# database server 
+module "mysql" {
+  source            = "../modules/instance"
+  var_instance_name = "euw3-mysql-instance-1"
+  network_self_link = module.vpc.out_vpc_self_link
+  # subnetwork_1       = module.mysql.instance_out_public_subnet_name
   env                = var.var_env
   company            = var.var_company
   var_region_name    = "europe-west3"
-  var_public_subnet  = var.euw3_public_subnet
-  var_private_subnet = var.euw3_private_subnet
-  var_image          = "centos-7-v20180129"
+  var_public_subnet  = module.vpc.out_euw3_public_subnet  # var.euw3_public_subnet
+  var_private_subnet = module.vpc.out_euw3_private_subnet # var.euw3_private_subnet
+  var_image          = "centos-cloud/centos-7"
   instance_number    = 1
+}
+
+
+resource "google_compute_http_health_check" "instance_template" {
+  name                = "instance-health-check"
+  request_path        = "/"
+  check_interval_sec  = 20
+  timeout_sec         = 10
+  port                = 80
+  unhealthy_threshold = 3
 }
 
