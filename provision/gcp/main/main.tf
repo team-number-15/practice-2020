@@ -25,16 +25,18 @@ module "http-load-balancer" {
   var_zones = ["south-carolina", "frankfurt"]
 
   var_backend_instance_group = {
-    use1-ig = module.instance-group-us-east1.instance_group 
-    euw3-ig = module.instance-group-europe-west3.instance_group 
+    use1-ig = module.instance-group-us-east1.instance_group
+    euw3-ig = module.instance-group-europe-west3.instance_group
   }
+
+  var_backend_health_checks = [google_compute_http_health_check.http-check.self_link]
 }
 
 module "instance-group-us-east1" {
   source = "../modules/instance-group"
 
   var_zone              = "us-east1-b"
-  var_health_check      = google_compute_http_health_check.instance_template.self_link
+  var_health_check      = google_compute_http_health_check.http-check.self_link
   var_version_name      = "south_carolina_v1"
   var_instance_template = module.use1-django-server-instance-template.self_link
   var_instance_number   = 1
@@ -44,7 +46,7 @@ module "instance-group-europe-west3" {
   source = "../modules/instance-group"
 
   var_zone              = "europe-west3-b"
-  var_health_check      = google_compute_http_health_check.instance_template.self_link
+  var_health_check      = google_compute_http_health_check.http-check.self_link
   var_version_name      = "south_carolina_v1"
   var_instance_template = module.euw3-django-server-instance-template.self_link
   var_instance_number   = 1
@@ -56,22 +58,27 @@ module "use1-django-server-instance-template" {
   var_template_name_prefix = "use1-django-"
   var_machine_type         = "n1-standard-1"
   var_region               = "us-east1"
+  var_tags                 = ["ssh", "http"]
+  var_image                = "centos-cloud/centos-7"
+
 
   network_self_link  = module.vpc.out_vpc_self_link
-  var_public_subnet  = module.vpc.out_use1_public_subnet  # var.use1_public_subnet
-  var_private_subnet = module.vpc.out_use1_private_subnet # var.use1_private_subnet
+  var_public_subnet  = module.vpc.out_use1_public_subnet  
+  var_private_subnet = module.vpc.out_use1_private_subnet 
 }
 
 module "euw3-django-server-instance-template" {
   source = "../modules/instance-template"
 
-  var_template_name_prefix = "use1-django-"
+  var_template_name_prefix = "euw3-django-"
   var_machine_type         = "n1-standard-1"
   var_region               = "europe-west3"
+  var_tags                 = ["ssh", "http"]
+  var_image                = "centos-cloud/centos-7"
 
   network_self_link  = module.vpc.out_vpc_self_link
-  var_public_subnet  = module.vpc.out_euw3_public_subnet  # var.euw3_public_subnet
-  var_private_subnet = module.vpc.out_euw3_private_subnet # var.euw3_private_subnet
+  var_public_subnet  = module.vpc.out_euw3_public_subnet  
+  var_private_subnet = module.vpc.out_euw3_private_subnet 
 }
 
 # continious delivery server 
@@ -79,12 +86,11 @@ module "CD" {
   source            = "../modules/instance"
   var_instance_name = "use1-cd-instance-1"
   network_self_link = module.vpc.out_vpc_self_link
-  # subnetwork_1       = module.CD.instance_out_public_subnet_name
   env                = var.var_env
   company            = var.var_company
   var_region_name    = "us-east1"
-  var_public_subnet  = module.vpc.out_use1_public_subnet  # var.use1_public_subnet
-  var_private_subnet = module.vpc.out_use1_private_subnet # var.use1_private_subnet
+  var_public_subnet  = module.vpc.out_use1_public_subnet  
+  var_private_subnet = module.vpc.out_use1_private_subnet 
   var_image          = "centos-cloud/centos-7"
   instance_number    = 1
 }
@@ -94,22 +100,21 @@ module "mysql" {
   source            = "../modules/instance"
   var_instance_name = "euw3-mysql-instance-1"
   network_self_link = module.vpc.out_vpc_self_link
-  # subnetwork_1       = module.mysql.instance_out_public_subnet_name
   env                = var.var_env
   company            = var.var_company
   var_region_name    = "europe-west3"
-  var_public_subnet  = module.vpc.out_euw3_public_subnet  # var.euw3_public_subnet
-  var_private_subnet = module.vpc.out_euw3_private_subnet # var.euw3_private_subnet
+  var_public_subnet  = module.vpc.out_euw3_public_subnet  
+  var_private_subnet = module.vpc.out_euw3_private_subnet 
   var_image          = "centos-cloud/centos-7"
   instance_number    = 1
 }
 
 
-resource "google_compute_http_health_check" "instance_template" {
-  name                = "instance-health-check"
+resource "google_compute_http_health_check" "http-check" {
+  name                = "http-health-check"
   request_path        = "/"
   check_interval_sec  = 20
-  timeout_sec         = 10
+  timeout_sec         = 15
   port                = 80
   unhealthy_threshold = 3
 }

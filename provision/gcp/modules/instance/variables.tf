@@ -1,8 +1,10 @@
-variable "var_region_name" { }
+variable "var_instance_name" {}
 
-variable "network_self_link" { } 
+variable "var_region_name" {}
 
-variable "subnetwork_1" {}
+variable "network_self_link" {}
+
+# variable "subnetwork_1" {}
 
 variable "env" {}
 
