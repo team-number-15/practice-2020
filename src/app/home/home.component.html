@@ -1,0 +1,16 @@
+<div #chartTarget></div>
+
+<ngx-gauge [type]="gaugeType"
+           [value]="gaugeValue"
+           [label]="gaugeLabel"
+           [append]="gaugeAppendText"
+
+>
+</ngx-gauge>
+
+<highcharts-chart
+  [Highcharts]="Highcharts"
+  [options]="chartOptions"
+
+  style="width: 100%; height: 400px; display: block;"
+></highcharts-chart>

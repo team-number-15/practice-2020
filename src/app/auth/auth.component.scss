@@ -1,0 +1,21 @@
+.auth-heading {
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+
+  mat-form-field.mat-form-field {
+    color: #fff;
+    display: block;
+    font-size: 1.2rem;
+  }
+
+}
+
+
+
+
