@@ -1,2 +1,3 @@
-provision/gcp/main/technical-practice-2020-13636bd8f2e4.json
-provision/gcp/main/*.tfstate*
+provision/gcp-infrastructure/main/technical-practice-2020-13636bd8f2e4.json
+provision/gcp-infrastructure/main/*.tfstate*
+provision/gcp-infrastructure/main/.terraform/
