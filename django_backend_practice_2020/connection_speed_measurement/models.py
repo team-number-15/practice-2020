@@ -1,13 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+# from accounts.models import CustomUser
+from django_backend_practice_2020 import settings
 
 
-# General speed information
+# General speed test information
 class SpeedTest(models.Model):
     test_id = models.fields.AutoField(primary_key=True, help_text='Unique identifier for test')
-    tester = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    tester = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
     file = models.fields.BinaryField(help_text="Binary data for speed testing")
-
     file_size_mb = models.fields.FloatField(help_text="Size of data for speed testing in megabytes")
 
 
