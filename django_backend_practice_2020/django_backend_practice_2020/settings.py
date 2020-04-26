@@ -40,8 +40,13 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    'connection_speed_measurement.apps.ConnectionSpeedMeasurementConfig'
+    'connection_speed_measurement.apps.ConnectionSpeedMeasurementConfig',
+    'accounts',
+    'api',
+    #'accounts.apps.AccountsConfig'
 ]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
