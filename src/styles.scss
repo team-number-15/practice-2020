@@ -202,12 +202,30 @@ a {
 }
 
 button.btn {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: Montserrat, Roboto, sans-serif;
 
   &:hover {
     opacity: 0.8;
   }
 }
 
+header {
+  z-index: 10;
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+//body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-card.mat-card {
+  background: #00818a;
+}
+//.stat-card {
+//  background: #2d4059;
+//}
+.component-heading {
+  text-transform: uppercase;
+}
+
+

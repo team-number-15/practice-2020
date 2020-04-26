@@ -1,0 +1,70 @@
+#history {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .stat-numbers {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+
+    .stat-number-heading {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    mat-card.mat-card {
+      background: #1e2d4d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      //width: 300px;
+    }
+
+    mat-card.mat-card:not(:last-child) {
+      margin-right: 15px;
+    }
+
+    .stat-number {
+      font-size: 1.4rem;
+      font-weight: bolder;
+    }
+  }
+
+  .stat-download {
+    .stat-number {
+      color: #00818a;
+    }
+  }
+
+  .stat-upload {
+    .stat-number {
+      color: #ff6768;
+    }
+  }
+
+  .mbit {
+    font-size: 0.88rem;
+    margin-left: 5px;
+  }
+
+  .result-history-table.mat-table {
+    width: 100%;
+    font-family: Montserrat, Roboto, sans-serif;
+
+    .mat-cell {
+      font-size: 1.2rem;
+    }
+    .mat-header-cell {
+      font-size: 1.11rem;
+    }
+  }
+
+  mat-paginator.mat-paginator {
+    font-size: 1rem;
+  }
+}

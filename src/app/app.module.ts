@@ -11,14 +11,13 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
-// import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
-// import * as more from 'highcharts/highcharts-more.src';
-// import * as solidGauge from 'highcharts/modules/solid-gauge.src';
-
-import { ChartModule } from 'angular-highcharts';
-import {HighchartsChartModule} from 'highcharts-angular';
-
 import { NgxGaugeModule } from 'ngx-gauge';
+import {ChartsModule} from 'ng2-charts';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './register/register.component';
+import { ResultComponent } from './result/result.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,15 +25,21 @@ import { NgxGaugeModule } from 'ngx-gauge';
     AuthComponent,
     HomeComponent,
     AboutComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    DashboardComponent,
+    RegisterComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
     NgxGaugeModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
-    HighchartsChartModule
+    ChartsModule
   ],
   providers: [
 

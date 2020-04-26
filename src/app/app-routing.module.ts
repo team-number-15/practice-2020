@@ -4,12 +4,18 @@ import {AuthComponent} from './auth/auth.component';
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {RegisterComponent} from './register/register.component';
+import {ResultComponent} from './result/result.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'login', component: AuthComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'results/:id', component: ResultComponent},
   {path: 'error', component: ErrorPageComponent},
   {path: '**', redirectTo: '/error'}
 ];

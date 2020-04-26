@@ -1,0 +1,115 @@
+#speed-test {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  .main-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  ngx-gauge {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+
+  .gauge-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .btn {
+      align-self: center;
+      font-size: 1.5rem;
+      padding: 5px 30px;
+    }
+  }
+
+  .speed-right {
+    width: 580px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #1e2d47;
+    box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+
+    .speed-chart {
+      width: 100%;
+
+    }
+  }
+
+  .current-stats {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+
+    mat-card.mat-card {
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 30px 0px;
+      display: flex;
+      align-items: center;
+      width: 200px;
+
+
+      mat-icon.mat-icon {
+        color: #17223b;
+        font-size: 2rem;
+        font-weight: bold;
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
+
+      span {
+        font-size: 1.3rem;
+      }
+    }
+
+    .current-upload {
+      background: #ff6768;
+    }
+
+  }
+
+  .current-upload {
+    margin-left: 15px;
+  }
+
+  mat-form-field.mat-form-field {
+    font-size: 1.2rem;
+
+    .mat-option-text {
+      font-family: Montserrat, Roboto, sans-serif;
+    }
+  }
+
+  .test-config {
+    & > *:not(:last-child) {
+      margin-right: 15px;
+    }
+
+    .file-size-block,
+    .ttl-block{
+      display: inline-block;
+    }
+
+    .file-size {
+      width: 130px;
+    }
+
+    //.measurement {
+    //  width: 50px;
+    //}
+
+    .time-type {
+      width: 75px;
+    }
+
+    .time-to-live {
+      width: 100px;
+    }
+  }
+
+}
