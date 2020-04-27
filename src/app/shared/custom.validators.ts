@@ -1,7 +1,7 @@
 import {AbstractControl, FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
 
 export class CustomValidators {
+
   static password(control: FormControl): {[key: string]: any} | null {
     const passwordReg: RegExp = /^(?=.*[a-z])(?=.*[0-9])(?!.*[^a-z0-9])/i;
     const invalid = !passwordReg.test(control.value);
@@ -14,14 +14,11 @@ export class CustomValidators {
     const notMatch = firstPassword.value !== secondPassword.value;
     if (notMatch) {
       secondPassword.setErrors({ confirm: true });
+      // secondPassword.errors.confirm = true;
     } else {
       secondPassword.setErrors(null);
+      // secondPassword.errors.confirm = null;
     }
     return notMatch ? {matchPasswords: {value: true}} : null;
-  }
-
-  static uniqueEmail(control: FormControl): Promise<any> | Observable<any> {
-    return new Promise(resolve => {
-    });
   }
 }

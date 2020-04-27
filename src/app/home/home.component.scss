@@ -37,7 +37,7 @@
 
     .speed-chart {
       width: 100%;
-
+      height: 270px;
     }
   }
 
@@ -99,10 +99,6 @@
       width: 130px;
     }
 
-    //.measurement {
-    //  width: 50px;
-    //}
-
     .time-type {
       width: 75px;
     }
@@ -112,4 +108,50 @@
     }
   }
 
+}
+
+@media (max-width: 1111px) {
+  #speed-test {
+    .main-form {
+      justify-content: space-between;
+    }
+  }
+}
+
+@media (max-width: 1001px) {
+  #speed-test {
+    .main-form {
+      flex-direction: column;
+      justify-content: center;
+    }
+    .gauge-block {
+      margin-bottom: 20px;
+    }
+    .speed-right {
+      width: 100%;
+
+      //.speed-chart
+    }
+  }
+}
+
+@media (max-width: 491px) {
+  #speed-test {
+    .current-stats {
+      flex-direction: column;
+
+      mat-card.mat-card {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 15px;
+      }
+    }
+    .gauge-block {
+      canvas {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
 }

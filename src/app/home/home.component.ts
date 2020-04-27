@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   chartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     elements: {
       point: {
         radius: 0

@@ -1,21 +1,7 @@
 @import '~@angular/material/theming';
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap');
-// Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat-core();
-//
-//$practicefront2020-primary: mat-palette($mat-cyan);
-//$practicefront2020-accent: mat-palette($mat-pink, A200, A100, A400);
-//
-//$practicefront2020-warn: mat-palette($mat-red);
-//
-//$practicefront2020-theme: mat-light-theme($practicefront2020-primary, $practicefront2020-accent, $practicefront2020-warn);
-//
-//@include angular-material-theme($practicefront2020-theme);
-
 
 $light-text: #ffffff;
 $light-primary-text: $light-text;
@@ -192,7 +178,6 @@ select {
 }
 
 main {
-  //background: #404b69;
   background: #263859;
 }
 
@@ -216,16 +201,12 @@ header {
 }
 
 html, body { height: 100%; }
-//body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mat-card.mat-card {
   background: #00818a;
 }
-//.stat-card {
-//  background: #2d4059;
-//}
+
 .component-heading {
   text-transform: uppercase;
 }
-
 
