@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    #'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
     'rest_auth',
     'rest_auth.registration',
 
@@ -62,6 +64,22 @@ REST_FRAMEWORK = {
     ],
 }
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': os.environ['GOOGLE_AUTH_CLIENT_ID'],
+            'secret': os.environ['GOOGLE_AUTH_SECRET'],
+            'key': ''
+        }
+    }
+}
+
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
@@ -76,6 +94,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'django_backend_practice_2020.urls'
+
 
 TEMPLATES = [
     {
@@ -93,6 +112,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'django_backend_practice_2020.wsgi.application'
 
