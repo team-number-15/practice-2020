@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    #'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
     'rest_auth',
     'rest_auth.registration',
@@ -80,9 +80,22 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': '4fVN-7wnkDYmh7yC3GeDFkTB',
             'key': ''
         }
+    },
+    'facebook': {
+        'APP': {
+            'client_id': os.environ['FACEBOOK_AUTH_CLIENT_ID'],
+            'secret': os.environ['FACEBOOK_AUTH_SECRET'],
+            'key': ''
+        },
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'SCOPE': ['email', 'public_profile'],
+        'FIELDS': ['email', 'name', ],
     }
 }
 
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
