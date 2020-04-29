@@ -1,7 +1,7 @@
 from django.urls import include, path
 
-from . import views
+from .views import UserListView
 
 urlpatterns = [
-    path('', views.UserListView.as_view()),
+    path('', UserListView.as_view()),
 ]
