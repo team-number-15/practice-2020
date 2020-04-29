@@ -20,13 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+# SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+SECRET_KEY = '1ym1hxndj928kcg5#2^^=z*3**q-tfpg%na2o&jxovhr7ilcr4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -48,6 +50,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'rest_auth',
     'rest_auth.registration',
+    'corsheaders',
 
     'connection_speed_measurement.apps.ConnectionSpeedMeasurementConfig',
     'accounts',
@@ -73,8 +76,8 @@ AUTHENTICATION_BACKENDS = (
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': os.environ['GOOGLE_AUTH_CLIENT_ID'],
-            'secret': os.environ['GOOGLE_AUTH_SECRET'],
+            'client_id': '644435568241-m5s4156a83bjelq4t21l0bre7r4gdqaa.apps.googleusercontent.com',
+            'secret': '4fVN-7wnkDYmh7yC3GeDFkTB',
             'key': ''
         }
     }
@@ -86,6 +89,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware', #CORS-HEADERS
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
