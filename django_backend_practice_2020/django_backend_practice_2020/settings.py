@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -37,11 +39,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 
-    'connection_speed_measurement.apps.ConnectionSpeedMeasurementConfig'
+
+    'connection_speed_measurement',
+    'authentication',
+    'api',
 ]
 
 REST_FRAMEWORK = {
@@ -49,14 +63,54 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.TokenAuthentication',
     ],
 }
+
+JWT_AUTH = {
+    'JWT_SECRET_KEY': SECRET_KEY,
+    'JWT_ALGORITHM': 'HS256',
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28),
+}
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': os.environ['GOOGLE_AUTH_CLIENT_ID'],
+            'secret': os.environ['GOOGLE_AUTH_SECRET'],
+            'key': ''
+        }
+    },
+    'facebook': {
+        'APP': {
+            'client_id': os.environ['FACEBOOK_AUTH_CLIENT_ID'],
+            'secret': os.environ['FACEBOOK_AUTH_SECRET'],
+            'key': ''
+        },
+    }
+}
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'
+
+# AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware', #CORS-HEADERS
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -64,7 +118,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_USE_JWT = True
+
 ROOT_URLCONF = 'django_backend_practice_2020.urls'
+
 
 TEMPLATES = [
     {
@@ -82,6 +139,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'django_backend_practice_2020.wsgi.application'
 
@@ -129,6 +187,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# needed for registration and wish not to configure mail server
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
