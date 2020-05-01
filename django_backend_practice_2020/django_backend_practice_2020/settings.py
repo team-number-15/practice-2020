@@ -20,8 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
-SECRET_KEY = '1ym1hxndj928kcg5#2^^=z*3**q-tfpg%na2o&jxovhr7ilcr4'
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,19 +40,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
-    'rest_auth',
-    'rest_auth.registration',
-    'corsheaders',
 
-    'connection_speed_measurement.apps.ConnectionSpeedMeasurementConfig',
-    'accounts',
+
+    'connection_speed_measurement',
+    'authentication',
     'api',
 ]
 
@@ -62,8 +62,10 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.TokenAuthentication',
     ],
 }
 
@@ -87,9 +89,6 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': os.environ['FACEBOOK_AUTH_SECRET'],
             'key': ''
         },
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'SCOPE': ['email', 'public_profile'],
-        'FIELDS': ['email', 'name', ],
     }
 }
 
@@ -97,7 +96,7 @@ LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/'
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+# AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -109,6 +108,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_USE_JWT = True
 
 ROOT_URLCONF = 'django_backend_practice_2020.urls'
 
