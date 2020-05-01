@@ -1,14 +1,42 @@
-<header>
+<header (window:resize)="onResize($event)">
   <nav>
     <p class="nav-logo"><a [routerLink]="['/']">Speed<span>Test</span></a></p>
-    <ul class="nav-list">
+    <ul class="nav-list" *ngIf="windowWidth > 768">
       <li class="nav-item"><a [routerLink]="['/']">Home</a></li>
       <li class="nav-item"><a [routerLink]="['/about']">About</a></li>
-      <li class="nav-item"><a [routerLink]="['/login']"><mat-icon>person</mat-icon> Log in</a></li>
+<!--      <li class="nav-item" *ngIf="authService.isAuthenticated()"><a [routerLink]="['/login']"><mat-icon>person</mat-icon> Log in</a></li>-->
+      <li class="nav-item" [mat-menu-trigger-for]="menu">
+        <mat-icon>person</mat-icon><span class="account">meleshkodim2000@gmail.com</span>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/dashboard']"><mat-icon>insert_chart_outlined</mat-icon>Dashboard</button>
+          <button mat-menu-item (click)="authService.logout()"><mat-icon>exit_to_app</mat-icon>Log out</button>
+        </mat-menu>
+      </li>
     </ul>
+    <button *ngIf="windowWidth <= 768" mat-icon-button class="menu-btn" (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+
   </nav>
 </header>
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+<mat-sidenav-container #sidenavContainer>
+  <mat-sidenav #sidenav [mode]="'over'" position="end" fixedInViewport="true" role="navigation">
+    <ul class="nav-list">
+      <li class="nav-item"><a [routerLink]="['/login']" (click)="sidenav.close()"><mat-icon>person</mat-icon> Log in</a></li>
+      <li class="nav-item"><a [routerLink]="['/']" (click)="sidenav.close()">Home</a></li>
+      <li class="nav-item"><a [routerLink]="['/about']" (click)="sidenav.close()">About</a></li>
+    </ul>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!--in here all the content must reside. We will add a navigation header as well-->
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #desktop>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</ng-template>
+

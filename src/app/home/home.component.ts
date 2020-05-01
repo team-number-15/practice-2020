@@ -1,24 +1,35 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
+import {transition, trigger, useAnimation} from '@angular/animations';
+import {zoomIn} from 'ng-animate';
+import {IpAddressService} from './ip-address.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('zoom', [
+      transition('void => *', useAnimation(zoomIn , {
+        params: {
+          timing: 1,
+        }
+      }))
+    ]),
+  ]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
+  zoom: any;
+  clientIpAddress;
   isStartDisabled = false;
+  isTestStarted = false;
   isDataLoading = false;
   speed: number;
   downloadSpeed: number;
   uploadSpeed: number;
-  // selectedServer = 'any';
-  // measuredIn = 'mb';
-  // timeToLiveType = 'hours';
-  // timeToLive = 1;
-  // fileSize = 0;
   gaugeType = 'semi';
   gaugeValue: number | string = 'Connecting';
   gaugeLabel = '';
@@ -31,8 +42,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
     elements: {
       point: {
         radius: 0
-      }
+      },
     },
+    scales: {
+      xAxes: [{
+        display: false
+      }],
+      yAxes: [{
+        display: true
+      }],
+    }
   };
 
   chartData = [{
@@ -61,9 +80,23 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private breakpointObserver: BreakpointObserver,
+    private ip: IpAddressService,
   ) { }
 
   ngOnInit(): void {
+    this.getIP();
+    this.breakpointObserver
+      .observe(['(max-width: 491px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.gaugeSize = 200;
+          this.chartOptions.scales.yAxes[0].display = false;
+        } else {
+          this.gaugeSize = 280;
+          this.chartOptions.scales.yAxes[0].display = false;
+        }
+      });
   }
 
   ngAfterViewInit(): void {
@@ -91,6 +124,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   startSpeedTest() {
     this.gaugeLabel = 'Connecting...';
+    this.isTestStarted = false;
     this.gaugeValue = 0;
     this.isStartDisabled = true;
     const speedTestProm = new Promise(resolve => {
@@ -100,9 +134,32 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
 
     speedTestProm.then(() => {
+      this.isTestStarted = true;
       this.gaugeLabel = 'Speed';
       this.gaugeAppendText = 'Mbps';
       this.randomValue();
     });
+  }
+
+  getIP() {
+    this.ip.getIpAddress()
+      .subscribe(response => {
+        this.clientIpAddress = response.ip;
+      });
+  }
+
+  @HostListener('window.resize', ['$event'])
+  onResize(event) {
+    this.breakpointObserver
+      .observe(['(max-width: 491px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.gaugeSize = 200;
+          this.chartOptions.scales.yAxes[0].display = false;
+        } else {
+          this.gaugeSize = 280;
+          this.chartOptions.scales.yAxes[0].display = true;
+        }
+      });
   }
 }

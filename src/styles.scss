@@ -190,6 +190,7 @@ button.btn {
   font-size: 1.25rem;
   font-weight: bold;
   font-family: Montserrat, Roboto, sans-serif;
+  padding: 5px 20px;
 
   &:hover {
     opacity: 0.8;
@@ -208,5 +209,8 @@ mat-card.mat-card {
 
 .component-heading {
   text-transform: uppercase;
+}
+.mat-drawer-backdrop.mat-drawer-shown {
+  background: rgba(0,0,0,0.5);
 }
 

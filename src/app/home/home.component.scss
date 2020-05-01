@@ -38,6 +38,7 @@
     .speed-chart {
       width: 100%;
       height: 270px;
+      margin-bottom: 5px;
     }
   }
 
@@ -108,6 +109,18 @@
     }
   }
 
+  .ip-block {
+    margin-top: 15px;
+
+    .ip {
+      font-size: 1.2rem;
+
+      strong {
+        color: #00bcd4;
+      }
+    }
+  }
+
 }
 
 @media (max-width: 1111px) {
@@ -151,6 +164,35 @@
       canvas {
         width: 200px;
         height: 200px;
+      }
+    }
+
+    mat-form-field.mat-form-field,
+    .file-size-block,
+    .ttl-block {
+      width: 100%;
+    }
+
+    .test-config {
+      .ttl-block {
+        display: inline-flex;
+        margin-top: 7px;
+      }
+      .file-size {
+        width: 100%;
+      }
+      .time-to-live {
+        flex: 1.5;
+      }
+    }
+  }
+}
+
+@media (max-width: 415px) {
+  #speed-test {
+    .speed-right {
+      .speed-chart {
+        height: 150px;
       }
     }
   }

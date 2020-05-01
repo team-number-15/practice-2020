@@ -7,6 +7,7 @@ import {ErrorPageComponent} from './error-page/error-page.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {RegisterComponent} from './register/register.component';
 import {ResultComponent} from './result/result.component';
+import {AuthGuardService} from './auth/auth-guard.service';
 
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'login', component: AuthComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   {path: 'results/:id', component: ResultComponent},
   {path: 'error', component: ErrorPageComponent},
   {path: '**', redirectTo: '/error'}

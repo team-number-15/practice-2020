@@ -10,6 +10,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatNavList} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 
 const modules = [
   MatIconModule,
@@ -22,6 +25,8 @@ const modules = [
   MatTableModule,
   MatSortModule,
   MatPaginatorModule,
+  MatSidenavModule,
+  MatMenuModule,
   ClipboardModule,
 ];
 
