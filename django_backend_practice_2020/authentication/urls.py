@@ -1,6 +1,7 @@
 from django.urls import path
-from . import views
+from .views import GoogleLogin, UserList
 
 urlpatterns = [
-    path('google/', views.GoogleLogin.as_view(), name='google_login')
+    path('social/google/', GoogleLogin.as_view(), name='google_login'),
+    path('users/', UserList.as_view(), name='users_list')
 ]
