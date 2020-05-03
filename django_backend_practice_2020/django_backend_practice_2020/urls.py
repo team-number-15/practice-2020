@@ -12,5 +12,5 @@ urlpatterns = [
     path('api/v1/auth/', include('authentication.urls')),
     path('api/v1/signup/', include('rest_auth.registration.urls')),
 
-    path('api/v1/speed', include('connection_speed_measurement.urls')),
+    path('api/v1/speedtest/', include('connection_speed_measurement.urls')),
 ]
