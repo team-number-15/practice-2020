@@ -13,7 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(req);
+    console.log('inter request ', req);
     if (this.authService.token && !(req.url === 'http://api.ipify.org/?format=json')) {
       req = req.clone({
         headers: req.headers.set('Authorization', 'JWT '.concat(this.authService.token))
@@ -24,6 +24,13 @@ export class AuthInterceptor implements HttpInterceptor {
         catchError((error: HttpErrorResponse) => {
           console.log('Interceptor Error ', error);
           if (error.status === 401) {
+            this.authService.logout();
+            this.router.navigate(['/login'], {
+              queryParams: {
+                authFailed: true
+              }
+            });
+          } else if (error.status === 400 && req.url === 'http://127.0.0.1:8000/api/v1/auth/login/') {
             this.authService.logout();
             this.router.navigate(['/login'], {
               queryParams: {
