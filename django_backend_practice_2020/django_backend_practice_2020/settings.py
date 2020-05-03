@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+
+    # 3rd party
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
 
+    # Local
     'connection_speed_measurement',
     'authentication',
     'api',
