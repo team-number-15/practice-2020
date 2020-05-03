@@ -1,4 +1,6 @@
 <h2 class="auth-heading component-heading">Log in</h2>
+<div class="auth-message" *ngIf="haveToLogin">To use our app you have to sign in at first</div>
+<div class="auth-message auth-error" *ngIf="authError">Authentication error. Login or password is incorrect</div>
 <form class="auth-form" [formGroup]="authForm" (ngSubmit)="authSubmit()">
   <mat-form-field class="form-field">
     <mat-label>Login</mat-label>

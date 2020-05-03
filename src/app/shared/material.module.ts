@@ -13,6 +13,8 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatNavList} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 const modules = [
   MatIconModule,
@@ -27,6 +29,8 @@ const modules = [
   MatPaginatorModule,
   MatSidenavModule,
   MatMenuModule,
+  MatSnackBarModule,
+  MatExpansionModule,
   ClipboardModule,
 ];
 

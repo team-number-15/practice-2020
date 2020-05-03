@@ -5,8 +5,8 @@ import {Router} from '@angular/router';
 import {AuthErrorStateMatcher} from '../auth/auth.component';
 import {CustomValidators} from '../shared/custom.validators';
 import {AsyncValidators} from '../shared/async.validators';
-import {RegistrationService} from './registration.service';
 import {RegisterUser} from '../shared/shared.interfaces';
+import {AuthService} from '../auth/auth.service';
 
 export class RegisterErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -19,12 +19,13 @@ export class RegisterErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [RegistrationService]
+  providers: []
 })
 export class RegisterComponent implements OnInit {
 
+  errors: any;
   registerForm = this.fb.group({
-    username: ['', [Validators.required]],
+    username: ['', [Validators.required], this.asyncValidator.uniqueUsername()],
     email: ['', [Validators.required, Validators.email], this.asyncValidator.uniqueEmail()],
     password: ['', [Validators.required, Validators.minLength(8), CustomValidators.password]],
     confirmPassword: ['', [Validators.required]],
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private asyncValidator: AsyncValidators,
-    private registrationService: RegistrationService
+    private registration: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -48,11 +49,15 @@ export class RegisterComponent implements OnInit {
       password1: this.registerForm.get('password').value,
       password2: this.registerForm.get('confirmPassword').value
     };
-    this.registrationService.registerUser(newUser)
+    this.registration.registerUser(newUser)
       .subscribe(response => {
-        console.log('registration Response', response);
+        this.router.navigate(['/'], {
+          queryParams: {
+            signUpSuccess: true
+          }
+        });
         this.registerForm.reset();
-      });
-    // this.router.navigate(['/login']);
+      },
+        error => this.errors = error);
   }
 }

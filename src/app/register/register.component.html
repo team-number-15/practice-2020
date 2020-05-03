@@ -9,9 +9,9 @@
     <mat-error *ngIf="registerForm.get('username').hasError('required')">
       Username is <strong>required</strong>
     </mat-error>
-<!--    <mat-error *ngIf="registerForm.get('username').hasError('userExists')">-->
-<!--      Email <strong>{{registerForm.get('username').value}}</strong> already exists-->
-<!--    </mat-error>-->
+    <mat-error *ngIf="registerForm.get('username').hasError('usernameExists')">
+      Username <strong>{{registerForm.get('username').value}}</strong> already exists
+    </mat-error>
   </mat-form-field>
   <mat-form-field class="form-field">
     <mat-label>Email address</mat-label>

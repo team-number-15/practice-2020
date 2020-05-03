@@ -2,7 +2,17 @@
   margin-bottom: 30px;
   font-size: 2rem;
 }
-
+.auth-message {
+  width: 500px;
+  padding: 20px;
+  margin-bottom: 10px;
+  color: #00a5c3;
+  border: 2px solid #00a5c3;
+}
+.auth-error {
+  color: #ff6768;
+  border: 2px solid #ff6768;
+}
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -27,6 +37,9 @@
 @media (max-width: 540px) {
   .auth-heading {
     font-size: 1.5rem;
+  }
+  .auth-message {
+    width: 100%;
   }
   .auth-form {
     width: 100%;

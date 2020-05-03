@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {AuthUser} from '../shared/shared.interfaces';
@@ -12,12 +12,6 @@ export class AuthErrorStateMatcher implements ErrorStateMatcher {
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
-
-// export interface User {
-//   id?: number;
-//   username: string;
-//   password: string;
-// }
 
 @Component({
   selector: 'app-auth',
@@ -32,14 +26,22 @@ export class AuthComponent implements OnInit {
   });
   matcher = new AuthErrorStateMatcher();
   httpTest;
+  authError = false;
+  haveToLogin = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      this.authError = !!params.authFailed;
+      this.haveToLogin = !!params.haveToLogin;
+      console.log('AUTH ERROR? ', this.authError);
+    });
   }
 
   authSubmit() {
@@ -48,7 +50,11 @@ export class AuthComponent implements OnInit {
       password: this.authForm.get('password').value
     };
     this.authService.login(user).subscribe(
-      () => this.router.navigate(['/'])
+      () => this.router.navigate(['/'], {
+        queryParams: {
+          authSuccess: true
+        }
+      })
     );
   }
 }

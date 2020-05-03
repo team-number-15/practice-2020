@@ -1,10 +1,11 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {transition, trigger, useAnimation} from '@angular/animations';
 import {zoomIn} from 'ng-animate';
 import {IpAddressService} from './ip-address.service';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,7 @@ import {IpAddressService} from './ip-address.service';
 export class HomeComponent implements OnInit, AfterViewInit {
 
   zoom: any;
+  authSuccess = false;
   clientIpAddress;
   isStartDisabled = false;
   isTestStarted = false;
@@ -30,6 +32,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   speed: number;
   downloadSpeed: number;
   uploadSpeed: number;
+
+  snackBarConfig: MatSnackBarConfig = {
+    verticalPosition: 'bottom',
+    panelClass: ['snack-bar'],
+    duration: 2500,
+  };
+
   gaugeType = 'semi';
   gaugeValue: number | string = 'Connecting';
   gaugeLabel = '';
@@ -82,10 +91,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private router: Router,
     private breakpointObserver: BreakpointObserver,
     private ip: IpAddressService,
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     this.getIP();
+    this.route.queryParams.subscribe((params: Params) => {
+      this.authSuccess = !!params.authSuccess;
+    });
+    if (this.authSuccess) {
+      this.snackBar.open('Login succeeded', 'Dismiss', this.snackBarConfig);
+    }
     this.breakpointObserver
       .observe(['(max-width: 491px)'])
       .subscribe((state: BreakpointState) => {

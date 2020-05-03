@@ -21,9 +21,25 @@
 <mat-sidenav-container #sidenavContainer>
   <mat-sidenav #sidenav [mode]="'over'" position="end" fixedInViewport="true" role="navigation">
     <ul class="nav-list">
-      <li class="nav-item"><a [routerLink]="['/login']" (click)="sidenav.close()"><mat-icon>person</mat-icon> Log in</a></li>
+      <li class="nav-item" *ngIf="!authService.isAuthenticated()"><a
+        [routerLink]="['/login']"
+        (click)="sidenav.close()"
+      ><mat-icon>person</mat-icon> Log in</a></li>
+      <li class="nav-item"
+          *ngIf="authService.isAuthenticated()"
+      >
+        <mat-icon>person</mat-icon><span class="account"> {{ authService.currentUser.username }}</span>
+      </li>
+      <li class="nav-item" *ngIf="authService.isAuthenticated()"><a
+        [routerLink]="['/dashboard']"
+        (click)="sidenav.close()"
+      ><mat-icon>insert_chart_outlined</mat-icon> Dashboard</a></li>
       <li class="nav-item"><a [routerLink]="['/']" (click)="sidenav.close()">Home</a></li>
       <li class="nav-item"><a [routerLink]="['/about']" (click)="sidenav.close()">About</a></li>
+      <li class="nav-item"
+          *ngIf="authService.isAuthenticated()"
+          (click)="authService.logout()"
+      ><a (click)="sidenav.close()"><mat-icon>exit_to_app</mat-icon> Log out</a></li>
     </ul>
   </mat-sidenav>
   <mat-sidenav-content>

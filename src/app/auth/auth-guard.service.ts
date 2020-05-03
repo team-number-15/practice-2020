@@ -17,7 +17,7 @@ export class AuthGuardService implements CanActivate {
       this.authService.logout();
       this.router.navigate(['login'], {
         queryParams: {
-          auth: false
+          haveToLogin: true
         }
       });
       return false;

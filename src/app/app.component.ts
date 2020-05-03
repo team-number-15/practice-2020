@@ -3,6 +3,7 @@ import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {MatSidenav, MatSidenavContainer} from '@angular/material/sidenav';
 import {AuthService} from './auth/auth.service';
 import {CurrentUser} from './shared/shared.interfaces';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.windowWidth = window.innerWidth;
+    if (this.authService.isAuthenticated()) {
+      this.authService.currentUser = JSON.parse(localStorage.getItem('curUser')) as CurrentUser;
+    }
   }
 
   @HostListener('window.resize', ['$event'])

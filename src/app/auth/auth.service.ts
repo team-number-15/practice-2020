@@ -4,8 +4,9 @@ import {Router} from '@angular/router';
 
 import * as jwtDecode from 'jwt-decode';
 import * as moment from 'moment';
-import {AuthUser, CurrentUser, JWTPayload} from '../shared/shared.interfaces';
+import {AuthUser, CurrentUser, JWTPayload, RegisterUser} from '../shared/shared.interfaces';
 import {shareReplay, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 
 @Injectable({
@@ -26,7 +27,7 @@ export class AuthService {
     const expiresAt = moment.unix(payload.exp);
 
     this.currentUser = {
-      pk: payload.pk,
+      pk: authResult.user.pk,
       username: payload.username,
       email: payload.email
     };
@@ -39,6 +40,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  get apiUrlRoot(): string {
+    return this.apiRoot;
+  }
+
   login(user: AuthUser) {
     return this.http.post(this.apiRoot.concat('auth/login/'), user)
       .pipe(
@@ -49,7 +54,11 @@ export class AuthService {
 
   logout() {
     localStorage.clear();
-    // this.router.navigate(['/login']);
+    this.router.navigate(['/login'], {
+      queryParams: {
+        haveToLogin: true
+      }
+    });
   }
 
   refreshToken() {
@@ -71,5 +80,13 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return !!this.token && moment().isBefore(this.getExpiration());
+  }
+
+  registerUser(user: RegisterUser): Observable<RegisterUser> {
+    return this.http.post<RegisterUser>(this.apiRoot.concat('signup/'), user)
+      .pipe(
+        tap(response => this.setSession(response)),
+        shareReplay()
+      );
   }
 }

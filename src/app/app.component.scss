@@ -129,6 +129,13 @@ mat-sidenav-container {
       margin-bottom: 15px;
       margin-left: 0;
       font-size: 1.8rem;
+
+      mat-icon.mat-icon {
+        font-size: 1.8rem;
+        //width: 30px;
+        height: 33px;
+        vertical-align: middle;
+      }
     }
   }
 }
