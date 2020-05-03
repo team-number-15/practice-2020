@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '
 import {ErrorStateMatcher} from '@angular/material/core';
 import {Router} from '@angular/router';
 import {HttpClient, HttpParams} from '@angular/common/http';
+import {AuthService} from './auth.service';
+import {AuthUser} from '../shared/shared.interfaces';
 
 export class AuthErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -11,11 +13,11 @@ export class AuthErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-export interface User {
-  id?: number;
-  username: string;
-  password: string;
-}
+// export interface User {
+//   id?: number;
+//   username: string;
+//   password: string;
+// }
 
 @Component({
   selector: 'app-auth',
@@ -25,36 +27,28 @@ export interface User {
 export class AuthComponent implements OnInit {
 
   authForm = this.fb.group({
-    login: ['', [Validators.required, Validators.email]],
+    login: ['', [Validators.required]],
     password: ['', Validators.required],
   });
   matcher = new AuthErrorStateMatcher();
   httpTest;
 
-  availableUsers: User[];
-
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private http: HttpClient,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
   }
 
   authSubmit() {
-    this.http.get<User[]>('https://jsonplaceholder.typicode.com/users', {
-      params: new HttpParams().set('email', this.authForm.get('login').value)
-    })
-      .subscribe(users => {
-        this.availableUsers = users;
-        if (this.availableUsers[0]){
-          this.httpTest = 'it works';
-        } else {
-          this.httpTest = 'wrong username';
-        }
-        // this.authForm.reset();
-      });
-    // this.router.navigate(['/']);
+    const user: AuthUser = {
+      username: this.authForm.get('login').value,
+      password: this.authForm.get('password').value
+    };
+    this.authService.login(user).subscribe(
+      () => this.router.navigate(['/'])
+    );
   }
 }

@@ -2,6 +2,7 @@ import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/c
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {MatSidenav, MatSidenavContainer} from '@angular/material/sidenav';
 import {AuthService} from './auth/auth.service';
+import {CurrentUser} from './shared/shared.interfaces';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit {
   title = 'practicefront2020';
   windowWidth = 0;
   @ViewChild('sidenav', {static: false})sideNav: MatSidenav;
-  // @ViewChild('sidenavContainer', {static: true})sideNavContainer: MatSidenavContainer;
+  curUser: CurrentUser;
 
   constructor(
     public breakpointObserver: BreakpointObserver,
@@ -21,7 +22,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.windowWidth = window.innerWidth;
-    // console.log(this.sideNavContainer);
   }
 
   @HostListener('window.resize', ['$event'])

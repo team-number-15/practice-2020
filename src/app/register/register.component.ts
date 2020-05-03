@@ -5,7 +5,8 @@ import {Router} from '@angular/router';
 import {AuthErrorStateMatcher} from '../auth/auth.component';
 import {CustomValidators} from '../shared/custom.validators';
 import {AsyncValidators} from '../shared/async.validators';
-import {RegistrationService, User} from './registration.service';
+import {RegistrationService} from './registration.service';
+import {RegisterUser} from '../shared/shared.interfaces';
 
 export class RegisterErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -41,7 +42,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerSubmit() {
-    const newUser: User = {
+    const newUser: RegisterUser = {
       username: this.registerForm.get('username').value,
       email: this.registerForm.get('email').value,
       password1: this.registerForm.get('password').value,

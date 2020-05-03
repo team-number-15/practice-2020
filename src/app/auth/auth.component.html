@@ -3,9 +3,9 @@
   <mat-form-field class="form-field">
     <mat-label>Login</mat-label>
     <input matInput placeholder="Login..." formControlName="login" required [errorStateMatcher]="matcher">
-    <mat-error *ngIf="authForm.get('login').hasError('email') && !authForm.get('login').hasError('required')">
-      Please enter a valid email address
-    </mat-error>
+<!--    <mat-error *ngIf="authForm.get('login').hasError('email') && !authForm.get('login').hasError('required')">-->
+<!--      Please enter a valid email address-->
+<!--    </mat-error>-->
     <mat-error *ngIf="authForm.get('login').hasError('required')">
       Login is <strong>required</strong>
     </mat-error>

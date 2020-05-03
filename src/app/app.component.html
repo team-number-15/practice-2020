@@ -4,9 +4,9 @@
     <ul class="nav-list" *ngIf="windowWidth > 768">
       <li class="nav-item"><a [routerLink]="['/']">Home</a></li>
       <li class="nav-item"><a [routerLink]="['/about']">About</a></li>
-<!--      <li class="nav-item" *ngIf="authService.isAuthenticated()"><a [routerLink]="['/login']"><mat-icon>person</mat-icon> Log in</a></li>-->
-      <li class="nav-item" [mat-menu-trigger-for]="menu">
-        <mat-icon>person</mat-icon><span class="account">meleshkodim2000@gmail.com</span>
+      <li class="nav-item" *ngIf="!authService.isAuthenticated()"><a [routerLink]="['/login']"><mat-icon>person</mat-icon> Log in</a></li>
+      <li class="nav-item" *ngIf="authService.isAuthenticated()" [mat-menu-trigger-for]="menu">
+        <mat-icon>person</mat-icon><span class="account">{{ authService.currentUser.username }}</span>
         <mat-menu #menu="matMenu">
           <button mat-menu-item [routerLink]="['/dashboard']"><mat-icon>insert_chart_outlined</mat-icon>Dashboard</button>
           <button mat-menu-item (click)="authService.logout()"><mat-icon>exit_to_app</mat-icon>Log out</button>

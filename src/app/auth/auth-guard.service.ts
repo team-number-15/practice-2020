@@ -14,13 +14,16 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.authService.isAuthenticated()) {
+      this.authService.logout();
       this.router.navigate(['login'], {
         queryParams: {
           auth: false
         }
       });
       return false;
+    } else {
+      this.authService.refreshToken();
+      return true;
     }
-    return true;
   }
 }

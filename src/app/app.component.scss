@@ -111,18 +111,15 @@ mat-sidenav-container {
 }
 
 @media (max-width: 1001px) {
+  header {
+    padding: 10px 40px;
+  }
   main {
     padding: 150px 20px;
   }
 }
 
 @media (max-width: 768px) {
-  header {
-    padding: 10px 40px;
-
-
-  }
-
   .nav-list {
     flex-direction: column;
     list-style: none;
