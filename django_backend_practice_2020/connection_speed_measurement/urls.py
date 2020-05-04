@@ -1,11 +1,11 @@
 from django.urls import include, path
-from .views import SpeedTestListView, SpeedTestUnitListView, SpeedTestResultListView, SpeedTestDetailView, SpeedTestUnitDetailView, SpeedTestResultDetailView
+#from .views import SpeedTestListView, SpeedTestUnitListView, SpeedTestResultListView, SpeedTestDetailView, SpeedTestUnitDetailView, SpeedTestResultDetailView
+from .views import SpeedTestViewSet, SpeedTestUnitViewSet, SpeedTestResultViewSet
+from rest_framework.routers import SimpleRouter
 
-urlpatterns = [
-    path('speedtestlist/', SpeedTestListView.as_view(), name='test_list'),
-    path('unitlist/', SpeedTestUnitListView.as_view(), name='test_units_list'),
-    path('resultslist/', SpeedTestResultListView.as_view(), name='test_results_list'),
-    path('speedtestlist/<int:pk>/', SpeedTestDetailView.as_view(), name='test_detail'),
-    path('unitlist/<int:pk>/', SpeedTestUnitDetailView.as_view(), name='test_units_detail'),
-    path('resultslist/<int:pk>/', SpeedTestResultDetailView.as_view(), name='test_results_detail'),
-]
+router = SimpleRouter()
+router.register('speed_test', SpeedTestViewSet, basename='speed_tests')
+router.register('speed_test_unit', SpeedTestUnitViewSet, basename='speed_test_units')
+router.register('speed_test_result', SpeedTestResultViewSet, basename='speed_test_results')
+
+urlpatterns = router.urls
