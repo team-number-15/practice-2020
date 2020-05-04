@@ -8,6 +8,8 @@ import {AuthUser, CurrentUser, JWTPayload, RegisterUser} from '../shared/shared.
 import {shareReplay, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
+import {AuthService as SocialAuthService, FacebookLoginProvider, GoogleLoginProvider} from 'angularx-social-login';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private socialAuthService: SocialAuthService,
   ) {}
 
   private setSession(authResult) {
@@ -45,6 +48,7 @@ export class AuthService {
   }
 
   login(user: AuthUser) {
+    console.log('LOG IN PROCESS');
     return this.http.post(this.apiRoot.concat('auth/login/'), user)
       .pipe(
         tap(response => this.setSession(response)),
@@ -88,5 +92,36 @@ export class AuthService {
         tap(response => this.setSession(response)),
         shareReplay()
       );
+  }
+
+  signInWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then(userData => {
+        this.sendGoogleSocialUser(userData.authToken);
+      });
+  }
+
+  signInWithFB(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  sendGoogleSocialUser(accessToken: string) {
+    this.http.post(this.apiRoot.concat('auth/social/google/'), {
+      access_token: accessToken
+    }).pipe(
+      tap(response => this.setSession(response)),
+      // shareReplay()
+    ).subscribe(
+      () => this.router.navigate(['/'], {
+        queryParams: {
+          authSuccess: true
+        }
+      }),
+      error => console.log('Google authentication error ', error)
+    );
+  }
+
+  signOut(): void {
+    this.socialAuthService.signOut();
   }
 }

@@ -26,10 +26,14 @@ export class RegisterComponent implements OnInit {
   errors: any;
   registerForm = this.fb.group({
     username: ['', [Validators.required], this.asyncValidator.uniqueUsername()],
-    email: ['', [Validators.required, Validators.email], this.asyncValidator.uniqueEmail()],
+    email: ['', [
+      Validators.required,
+      Validators.email,
+      Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')
+    ], this.asyncValidator.uniqueEmail()],
     password: ['', [Validators.required, Validators.minLength(8), CustomValidators.password]],
     confirmPassword: ['', [Validators.required]],
-  }, {validator: CustomValidators.matchPasswords});
+  }, {validators: [CustomValidators.matchPasswords]});
   matcher = new RegisterErrorStateMatcher();
 
   constructor(
@@ -43,6 +47,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerSubmit() {
+    // console.log(Object.values(this.registerForm.controls));
     const newUser: RegisterUser = {
       username: this.registerForm.get('username').value,
       email: this.registerForm.get('email').value,

@@ -30,6 +30,24 @@
 
   .button-set {
     margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .social-auth-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      display: inline-block;
+      width: 33px;
+      height: auto;
+    }
+
+    img.facebook {
+      width: 30px;
+      margin-right: 5px;
+    }
   }
 
 }

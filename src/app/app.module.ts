@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
+
 import { AuthComponent } from './auth/auth.component';
 import {MaterialModule} from './shared/material.module';
 import { HomeComponent } from './home/home.component';
@@ -24,6 +26,26 @@ const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   multi: true,
   useClass: AuthInterceptor
+};
+
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('644435568241-kshhba96aevrthdqbstb99a04qg1o2bn.apps.googleusercontent.com')
+  },
+  // {
+  //   id: FacebookLoginProvider.PROVIDER_ID,
+  //   provider: new FacebookLoginProvider('229145725011435')
+  // }
+]);
+
+export function provideConfig() {
+  return config;
+}
+
+const AUTH_SERVICE_CONFIG = {
+  provide: AuthServiceConfig,
+  useFactory: provideConfig
 };
 
 @NgModule({
@@ -46,10 +68,12 @@ const INTERCEPTOR_PROVIDER: Provider = {
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    ChartsModule
+    ChartsModule,
+    SocialLoginModule
   ],
   providers: [
     INTERCEPTOR_PROVIDER,
+    AUTH_SERVICE_CONFIG,
   ],
   bootstrap: [AppComponent]
 })

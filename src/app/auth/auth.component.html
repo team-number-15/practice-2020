@@ -5,9 +5,6 @@
   <mat-form-field class="form-field">
     <mat-label>Login</mat-label>
     <input matInput placeholder="Login..." formControlName="login" required [errorStateMatcher]="matcher">
-<!--    <mat-error *ngIf="authForm.get('login').hasError('email') && !authForm.get('login').hasError('required')">-->
-<!--      Please enter a valid email address-->
-<!--    </mat-error>-->
     <mat-error *ngIf="authForm.get('login').hasError('required')">
       Login is <strong>required</strong>
     </mat-error>
@@ -32,7 +29,24 @@
       class="btn"
     >Register</button>
   </div>
-<!--  {{availableUsers | json}}-->
-  {{httpTest}}
+  <p>Or sign in with</p>
+  <div class="button-set">
+    <button
+      mat-raised-button
+      class="btn social-auth-btn"
+      type="button"
+      (click)="loginWithGoogle()"
+    >
+      <img src="assets/images/google.png" alt="google-icon">
+      <span>Google</span></button>
+    <button
+      mat-raised-button
+      class="btn social-auth-btn"
+      type="button"
+    >
+      <img class="facebook" src="assets/images/facebook1.png" alt="facebook-icon">
+      <span>Facebook</span>
+    </button>
+  </div>
 </form>
 
