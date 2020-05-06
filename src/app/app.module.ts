@@ -21,6 +21,7 @@ import { RegisterComponent } from './register/register.component';
 import { ResultComponent } from './result/result.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './auth/auth.interceptor';
+import {TruncatePipe} from './shared/pipes/truncate.pipe';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -57,7 +58,8 @@ const AUTH_SERVICE_CONFIG = {
     ErrorPageComponent,
     DashboardComponent,
     RegisterComponent,
-    ResultComponent
+    ResultComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,

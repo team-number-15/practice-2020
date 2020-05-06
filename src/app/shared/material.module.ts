@@ -16,6 +16,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
 
+
 const modules = [
   MatIconModule,
   MatFormFieldModule,
@@ -36,7 +37,7 @@ const modules = [
 
 @NgModule({
   imports: [...modules],
-  exports: [...modules]
+  exports: [...modules],
 })
 export class MaterialModule {
 }

@@ -7,6 +7,31 @@
     margin-bottom: 40px;
   }
 
+  .main-stat {
+    //margin-bottom: 20px;
+
+    p, strong {
+      font-size: 1.2rem;
+    }
+    .speed-stat-select {
+      display: block;
+      width: 100px;
+      font-size: 1.2rem;
+    }
+    .not-available-results {
+      display: inline-flex;
+      align-items: center;
+
+      & > *:not(:last-child) {
+        margin-right: 5px;
+      }
+
+      .not-available-select {
+        width: 100px;
+      }
+    }
+  }
+
   .stat-numbers {
     display: flex;
     flex-direction: row;

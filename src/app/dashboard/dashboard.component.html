@@ -1,25 +1,47 @@
 <section id="history">
   <h1 class="component-heading">Your speed test history</h1>
-
+  {{test}}
+  <div class="main-stat">
+    <p>Total tests done:  <strong>{{totalTestsDone}}</strong></p>
+    <p>Available results:  <strong>{{availableTestsAmount}}</strong></p>
+    <div class="not-available-results">
+      <p>Results will be no longer available in</p>
+      <mat-form-field class="not-available-select">
+        <mat-select [(value)]="notAvailableIn" (valueChange)="unavailableSelectChange()">
+          <mat-option value="hour">an hour</mat-option>
+          <mat-option value="day">a day</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <strong>:  {{almostUnavailableTestsAmount}}</strong>
+    </div>
+    <mat-form-field class="speed-stat-select">
+      <mat-label>Speed stat</mat-label>
+      <mat-select  [(value)]="speedStatFor" (valueChange)="speedStatSelectChange()">
+        <mat-option value="all">all time</mat-option>
+        <mat-option value="hour">hour</mat-option>
+        <mat-option value="day">day</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
   <div class="stat-numbers">
     <mat-card class="top-download stat-download">
       <h2 class="stat-number-heading">Top Download Speed</h2>
-      <p class="stat-number">12.46</p>
+      <p class="stat-number">{{topDownload | number:'1.0-2'}}</p>
       <p class="stat-number-label">Mbps</p>
     </mat-card>
     <mat-card class="avg-download stat-download">
       <h2 class="stat-number-heading">Average Download Speed</h2>
-      <p class="stat-number">12.46</p>
+      <p class="stat-number">{{avgDownload | number:'1.0-2'}}</p>
       <p class="stat-number-label">Mbps</p>
     </mat-card>
     <mat-card class="top-upload stat-upload">
       <h2 class="stat-number-heading">Top Upload Speed</h2>
-      <p class="stat-number">12.46</p>
+      <p class="stat-number">{{topUpload | number:'1.0-2'}}</p>
       <p class="stat-number-label">Mbps</p>
     </mat-card>
     <mat-card class="avg-upload stat-upload">
       <h2 class="stat-number-heading">Average Upload Speed</h2>
-      <p class="stat-number">12.46</p>
+      <p class="stat-number">{{avgUpload | number:'1.0-2'}}</p>
       <p class="stat-number-label">Mbps</p>
     </mat-card>
   </div>
