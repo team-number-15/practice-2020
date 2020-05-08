@@ -21,6 +21,7 @@
     </div>
 
     <div class="speed-right">
+      <p *ngIf="!isTestStarted" class="test-hint">To start the test you have to choose file size and lifetime of the test.</p>
       <div class="speed-chart" *ngIf="isTestStarted" [@zoom]="zoom">
         <canvas
           baseChart

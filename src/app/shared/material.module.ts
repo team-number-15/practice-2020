@@ -15,6 +15,8 @@ import {MatNavList} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 const modules = [
@@ -32,6 +34,8 @@ const modules = [
   MatMenuModule,
   MatSnackBarModule,
   MatExpansionModule,
+  MatTooltipModule,
+  MatDatepickerModule,
   ClipboardModule,
 ];
 

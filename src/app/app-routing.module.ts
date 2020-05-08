@@ -16,7 +16,8 @@ const routes: Routes = [
   {path: 'login', component: AuthComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
-  {path: 'results/:id', component: ResultComponent},
+  // {path: 'results/:id', component: ResultComponent},
+  {path: 'results', component: ResultComponent},
   {path: 'error', component: ErrorPageComponent},
   {path: '**', redirectTo: '/error'}
 ];

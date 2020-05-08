@@ -136,6 +136,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       const currentSpeedData = this.chartData[0].data;
       this.downloadSpeed = currentSpeedData.reduce((sum, curr) => sum + curr) / currentSpeedData.length;
       this.isStartDisabled = false;
+      this.router.navigate(['/results'], {
+      });
     }, 10000);
   }
 

@@ -1,6 +1,31 @@
 <section id="history">
   <h1 class="component-heading">Your speed test history</h1>
   {{test}}
+  <mat-card class="stat-filter">
+    <div class="filters">
+      <mat-form-field class="speed-stat-select">
+        <mat-label>Speed stat</mat-label>
+        <mat-select  [(value)]="speedStatFor" (valueChange)="speedStatSelectChange()">
+          <mat-option value="all">all time</mat-option>
+          <mat-option value="hour">last hour</mat-option>
+          <mat-option value="day">last day</mat-option>
+          <mat-option value="custom">custom date</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="custom-date-select" *ngIf="speedStatFor === 'custom'">
+        <mat-label>Choose date</mat-label>
+        <input matInput [matDatepicker]="dp" [value]="customDate" (dateChange)="customDateChange($event)">
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <button
+      class="btn"
+      mat-button
+      color="accent"
+      (click)="clearFilter()"
+    >Clear filter</button>
+  </mat-card>
   <div class="main-stat">
     <p>Total tests done:  <strong>{{totalTestsDone}}</strong></p>
     <p>Available results:  <strong>{{availableTestsAmount}}</strong></p>
@@ -14,14 +39,7 @@
       </mat-form-field>
       <strong>:  {{almostUnavailableTestsAmount}}</strong>
     </div>
-    <mat-form-field class="speed-stat-select">
-      <mat-label>Speed stat</mat-label>
-      <mat-select  [(value)]="speedStatFor" (valueChange)="speedStatSelectChange()">
-        <mat-option value="all">all time</mat-option>
-        <mat-option value="hour">hour</mat-option>
-        <mat-option value="day">day</mat-option>
-      </mat-select>
-    </mat-form-field>
+
   </div>
   <div class="stat-numbers">
     <mat-card class="top-download stat-download">
@@ -51,7 +69,7 @@
       <table mat-table [dataSource]="dataSource" matSort class="result-history-table">
 
         <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Test Date </th>
           <td mat-cell *matCellDef="let element"> {{element.testDate | date:'short' }} </td>
         </ng-container>
 
@@ -85,7 +103,7 @@
 
         <ng-container matColumnDef="share">
           <th mat-header-cell *matHeaderCellDef> Share </th>
-          <td mat-cell *matCellDef="let element"><mat-icon [cdkCopyToClipboard]="element['link']">share</mat-icon></td>
+          <td mat-cell *matCellDef="let element"><mat-icon class="share-btn" [cdkCopyToClipboard]="element['link']">share</mat-icon></td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

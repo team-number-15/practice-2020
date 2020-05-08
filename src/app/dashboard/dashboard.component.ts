@@ -2,7 +2,10 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
+import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import * as moment from 'moment';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 export interface SavedTestResult {
   testDate: moment.Moment;
@@ -61,7 +64,11 @@ const TEST_RESULTS_DATA: SavedTestResult[] = [
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  providers: [
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+  ],
 })
 export class DashboardComponent implements OnInit {
 
@@ -75,6 +82,7 @@ export class DashboardComponent implements OnInit {
   notAvailableIn = 'hour';
   speedStatFor = 'all';
   totalTestsDone: number;
+  customDate: moment.Moment;
 
   topDownload: number;
   topUpload: number;
@@ -134,7 +142,23 @@ export class DashboardComponent implements OnInit {
         this.currentTestResults = TEST_RESULTS_DATA.filter(value => {
           moment(value.testDate).isAfter(moment().subtract(1, 'hour'));
         });
+        break;
+      case 'custom':
+        this.customDate = moment().startOf('day');
+        this.customDateChange();
+        break;
     }
+    this.refreshData();
+  }
+
+  customDateChange(event?: MatDatepickerInputEvent<moment.Moment>) {
+    if (event) {
+      this.customDate = event.value;
+    }
+    this.currentTestResults = TEST_RESULTS_DATA.filter(value => {
+      return moment(value.testDate.startOf('day')).isSame(this.customDate);
+    });
+    console.log('current', this.currentTestResults);
     this.refreshData();
   }
 
@@ -152,5 +176,10 @@ export class DashboardComponent implements OnInit {
 
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  clearFilter() {
+    this.speedStatFor = 'all';
+    this.speedStatSelectChange();
   }
 }
