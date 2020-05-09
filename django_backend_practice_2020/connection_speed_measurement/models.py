@@ -8,8 +8,8 @@ from django_backend_practice_2020 import settings
 class SpeedTest(models.Model):
     test_id = models.fields.AutoField(primary_key=True, help_text='Unique identifier for test', verbose_name='Test ID')
     tester = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='Tester`s username')
-    file = models.fields.BinaryField(help_text="Binary data for speed testing", verbose_name="File data")
-    file_size_mb = models.fields.FloatField(help_text="Size of data for speed testing in megabytes",
+    file = models.fields.TextField(help_text="Data for speed testing", verbose_name="File data", blank=True)
+    file_size_mb = models.fields.IntegerField(help_text="Size of data for speed testing in megabytes",
                                             verbose_name="File size")
 
     def __str__(self):

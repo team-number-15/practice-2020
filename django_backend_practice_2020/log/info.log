@@ -1,0 +1,64 @@
+Bad Request: /api/v1/speedtest/speed_test_list/
+Internal Server Error: /api/v1/speedtest/speed_test_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 24, in perform_create
+    serializer.save()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/serializers.py", line 17, in create
+    file=GenerateFile(validated_data['file_size_mb'])
+TypeError: 'module' object is not callable
+Internal Server Error: /api/v1/speedtest/speed_test_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 24, in perform_create
+    serializer.save()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/serializers.py", line 18, in create
+    file=GenerateFile.generate_big_random_letters(validated_data['file_size_mb'])
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/utilities/GenerateFile.py", line 13, in generate_big_random_letters
+    chars = ''.join([random.choice(ascii_letters) for i in range(size * DEFAULT_SIZE_UNIT)])
+TypeError: 'float' object cannot be interpreted as an integer
+Bad Request: /api/v1/speedtest/speed_test_list/
+Not Found: /api/v1/auth/accounts/login/
+Method Not Allowed: /api/v1/auth/social/google/
