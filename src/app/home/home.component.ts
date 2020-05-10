@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} f
 import {FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
-import {transition, trigger, useAnimation} from '@angular/animations';
+import {animate, animateChild, query, sequence, style, transition, trigger, useAnimation} from '@angular/animations';
 import {zoomIn} from 'ng-animate';
 import {IpAddressService} from './ip-address.service';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
@@ -39,11 +39,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     duration: 2500,
   };
 
+  downloadColor = '#00818a';
+  uploadColor = '#ff6768';
+
   gaugeType = 'semi';
   gaugeValue: number | string = 'Connecting';
   gaugeLabel = '';
   gaugeAppendText = '';
   gaugeSize = 280;
+  gaugeForeground = this.downloadColor;
 
   chartOptions = {
     responsive: true,
@@ -123,22 +127,39 @@ export class HomeComponent implements OnInit, AfterViewInit {
     console.log(event);
   }
 
-  randomValue() {
+  randomValue(chartDataIndex: number) {
     const timer = setInterval(() => {
       this.speed = +(Math.random() * 100).toFixed(1);
       console.log(this.speed);
       this.gaugeValue = this.speed;
-      this.chartData[0].data.push(this.speed);
-      this.chartLabels.push('');
+      this.chartData[chartDataIndex].data.push(this.speed);
+      if (chartDataIndex === 0) {
+        this.chartLabels.push('');
+      }
     }, 100);
-    setTimeout(() => {
-      clearInterval(timer);
-      const currentSpeedData = this.chartData[0].data;
-      this.downloadSpeed = currentSpeedData.reduce((sum, curr) => sum + curr) / currentSpeedData.length;
-      this.isStartDisabled = false;
-      this.router.navigate(['/results'], {
-      });
-    }, 10000);
+    // setTimeout(() => {
+    //   clearInterval(timer);
+    //   const currentSpeedData = this.chartData[0].data;
+    //   this.downloadSpeed = currentSpeedData.reduce((sum, curr) => sum + curr) / currentSpeedData.length;
+    //   this.isStartDisabled = false;
+    //   // this.router.navigate(['/results'], {
+    //   // });
+    // }, 10000);
+    return new Promise(resolve => {
+      setTimeout(() => {
+        clearInterval(timer);
+        const currentSpeedData = this.chartData[chartDataIndex].data;
+        if (chartDataIndex === 0) {
+          this.downloadSpeed = currentSpeedData.reduce((sum, curr) => sum + curr) / currentSpeedData.length;
+        } else if (chartDataIndex === 1) {
+          this.uploadSpeed = currentSpeedData.reduce((sum, curr) => sum + curr) / currentSpeedData.length;
+        }
+        // this.isStartDisabled = false;
+        resolve();
+        // this.router.navigate(['/results'], {
+        // });
+      }, 10000);
+    });
   }
 
   startSpeedTest() {
@@ -156,7 +177,31 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.isTestStarted = true;
       this.gaugeLabel = 'Speed';
       this.gaugeAppendText = 'Mbps';
-      this.randomValue();
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(this.randomValue(0));
+        }, 800);
+      });
+    }).then(value => value)
+      .then(() => {
+      this.gaugeValue = 0;
+      // this.gaugeForeground = this.uploadColor;
+      return new Promise(resolve => {
+        setTimeout(() => {
+          this.gaugeForeground = this.uploadColor;
+          resolve(this.randomValue(1));
+        }, 1500);
+      });
+      // return this.randomValue(1);
+    }).then(value => {
+      return value;
+    }).then(() => {
+      this.gaugeValue = 0;
+      this.gaugeForeground = this.downloadColor;
+      this.isStartDisabled = false;
+      setTimeout(() => {
+        this.router.navigate(['/results']);
+      }, 1100);
     });
   }
 

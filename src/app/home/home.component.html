@@ -6,6 +6,7 @@
                  [label]="gaugeLabel"
                  [append]="gaugeAppendText"
                  [size]="gaugeSize"
+                 [foregroundColor]="gaugeForeground"
       >
       </ngx-gauge>
       <button
@@ -36,13 +37,19 @@
       <div class="current-stats" *ngIf="isTestStarted" [@zoom]="zoom">
         <mat-card class="current-download">
           <mat-icon> vertical_align_bottom</mat-icon>
-          <mat-spinner diameter="30" *ngIf="!downloadSpeed && isStartDisabled"></mat-spinner>
-          <span>{{ downloadSpeed | number:'1.0-2' }} Mbps</span>
+          <div class="stat-field">
+            <p class="stat-label">Download</p>
+            <mat-spinner diameter="30" *ngIf="!downloadSpeed && isStartDisabled"></mat-spinner>
+            <span *ngIf="downloadSpeed">{{ downloadSpeed | number:'1.0-2' }} Mbps</span>
+          </div>
         </mat-card>
         <mat-card class="current-upload">
           <mat-icon> vertical_align_top</mat-icon>
-          <mat-spinner diameter="30" *ngIf="!uploadSpeed && isStartDisabled"></mat-spinner>
-          <span>{{ uploadSpeed | number:'1.0-2' }} Mbps</span>
+          <div class="stat-field">
+            <p class="stat-label">Upload</p>
+            <mat-spinner diameter="30" *ngIf="!uploadSpeed && isStartDisabled"></mat-spinner>
+            <span *ngIf="uploadSpeed">{{ uploadSpeed | number:'1.0-2' }} Mbps</span>
+          </div>
         </mat-card>
       </div>
       <div class="test-config">

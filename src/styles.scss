@@ -179,6 +179,7 @@ select {
 
 main {
   background: #263859;
+  position: relative;
 }
 
 a {
@@ -218,4 +219,6 @@ mat-card.mat-card {
   border: solid 1px #00bcd4;
   background: #17223b;
 }
-
+.mat-tooltip {
+  font-size: 0.9rem;
+}

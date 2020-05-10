@@ -63,10 +63,10 @@ const AUTH_SERVICE_CONFIG = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     NgxGaugeModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,

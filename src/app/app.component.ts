@@ -3,12 +3,18 @@ import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {MatSidenav, MatSidenavContainer} from '@angular/material/sidenav';
 import {AuthService} from './auth/auth.service';
 import {CurrentUser} from './shared/shared.interfaces';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, RouterOutlet} from '@angular/router';
+import {animate, animateChild, query, sequence, style, transition, trigger} from '@angular/animations';
+import {fader, routeChangeAnimation} from './shared/route.animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    // routeChangeAnimation,
+    fader
+  ]
 })
 export class AppComponent implements OnInit {
   title = 'practicefront2020';
@@ -40,6 +46,10 @@ export class AppComponent implements OnInit {
       });
   }
 
+  prepareRoute(outlet: RouterOutlet) {
+    // tslint:disable-next-line:no-string-literal
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
   // logout() {
   //   this.authService.logout();
   // }

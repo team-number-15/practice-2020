@@ -1,29 +1,27 @@
-<!--<div class="speed-right">-->
-<!--  <p *ngIf="!isTestStarted" class="test-hint">To start the test you have to choose file size and lifetime of the test.</p>-->
-<!--  <div class="speed-chart" *ngIf="isTestStarted" [@zoom]="zoom">-->
-<!--    <canvas-->
-<!--      baseChart-->
-<!--      [chartType]="'line'"-->
-<!--      [datasets]="chartData"-->
-<!--      [labels]="chartLabels"-->
-<!--      [options]="chartOptions"-->
-<!--      [legend]="true"-->
-<!--      (chartClick)="onChartClick($event)">-->
-<!--    </canvas>-->
-<!--  </div>-->
-<!--  <div class="current-stats" *ngIf="isTestStarted" [@zoom]="zoom">-->
-<!--    <mat-card class="current-download">-->
-<!--      <mat-icon> vertical_align_bottom</mat-icon>-->
-<!--      <mat-spinner diameter="30" *ngIf="!downloadSpeed && isStartDisabled"></mat-spinner>-->
-<!--      <span>{{ downloadSpeed | number:'1.0-2' }} Mbps</span>-->
-<!--    </mat-card>-->
-<!--    <mat-card class="current-upload">-->
-<!--      <mat-icon> vertical_align_top</mat-icon>-->
-<!--      <mat-spinner diameter="30" *ngIf="!uploadSpeed && isStartDisabled"></mat-spinner>-->
-<!--      <span>{{ uploadSpeed | number:'1.0-2' }} Mbps</span>-->
-<!--    </mat-card>-->
-<!--  </div>-->
-<!--  <div class="ip-block">-->
-<!--    <p class="ip">Your IP:  <strong>{{ clientIpAddress }}</strong></p>-->
-<!--  </div>-->
-<!--</div>-->
+<section id="total-test-result">
+  <div class="result-wrap">
+    <div class="total-stats">
+      <mat-card class="current-download">
+        <mat-icon> vertical_align_bottom</mat-icon>
+        <div class="stat-field">
+          <p class="stat-label">Download</p>
+          <span>{{ download | number:'1.0-2' }} Mbps</span>
+        </div>
+      </mat-card>
+      <mat-card class="current-upload">
+        <mat-icon> vertical_align_top</mat-icon>
+        <div class="stat-field">
+          <p class="stat-label">Upload</p>
+          <span>{{ upload | number:'1.0-2' }} Mbps</span>
+        </div>
+      </mat-card>
+    </div>
+    <p class="total-stat">Result id: <strong>12343234</strong></p>
+    <p class="total-stat">Test date: <strong></strong></p>
+    <p class="total-stat">Expiration date: <strong></strong></p>
+    <p class="total-stat">Server: <strong>South Carolina</strong></p>
+    <button mat-button color="accent" class="btn"><mat-icon>share</mat-icon> Share</button>
+  </div>
+</section>
+
+

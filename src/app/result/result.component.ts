@@ -8,6 +8,9 @@ import {ActivatedRoute, Params} from '@angular/router';
 })
 export class ResultComponent implements OnInit {
 
+  download = 34.21;
+  upload = 25.93;
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {

@@ -97,7 +97,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.currentTestResults = TEST_RESULTS_DATA;
     this.refreshData();
-    // this.test = moment().format('D/M/YY HH:mm');
+    this.test = moment().format('YYYY-MM-DDTHH:mm');
   }
 
   getTopSpeed(speedData: number[]): number {

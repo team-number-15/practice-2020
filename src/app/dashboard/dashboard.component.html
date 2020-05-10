@@ -1,6 +1,6 @@
 <section id="history">
   <h1 class="component-heading">Your speed test history</h1>
-  {{test}}
+<!--  {{test}}-->
   <mat-card class="stat-filter">
     <div class="filters">
       <mat-form-field class="speed-stat-select">
@@ -30,14 +30,20 @@
     <p>Total tests done:  <strong>{{totalTestsDone}}</strong></p>
     <p>Available results:  <strong>{{availableTestsAmount}}</strong></p>
     <div class="not-available-results">
-      <p>Results will be no longer available in</p>
-      <mat-form-field class="not-available-select">
-        <mat-select [(value)]="notAvailableIn" (valueChange)="unavailableSelectChange()">
-          <mat-option value="hour">an hour</mat-option>
-          <mat-option value="day">a day</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <strong>:  {{almostUnavailableTestsAmount}}</strong>
+      <p>Results will be no longer available in
+        <mat-form-field class="not-available-select">
+          <mat-select [(value)]="notAvailableIn" (valueChange)="unavailableSelectChange()">
+            <mat-option value="hour">an hour</mat-option>
+            <mat-option value="day">a day</mat-option>
+          </mat-select>
+        </mat-form-field>: <strong>{{almostUnavailableTestsAmount}}</strong></p>
+<!--      <mat-form-field class="not-available-select">-->
+<!--        <mat-select [(value)]="notAvailableIn" (valueChange)="unavailableSelectChange()">-->
+<!--          <mat-option value="hour">an hour</mat-option>-->
+<!--          <mat-option value="day">a day</mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+
     </div>
 
   </div>
@@ -70,12 +76,12 @@
 
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Test Date </th>
-          <td mat-cell *matCellDef="let element"> {{element.testDate | date:'short' }} </td>
+          <td mat-cell *matCellDef="let element"> {{element.testDate | date:'d/M/yy, h:mm a' }} </td>
         </ng-container>
 
         <ng-container matColumnDef="expiration-date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Expiration Date </th>
-          <td mat-cell *matCellDef="let element"> {{element.expirationDate | date:'short' }} </td>
+          <td mat-cell *matCellDef="let element"> {{element.expirationDate | date:'d/M/yy, h:mm a' }} </td>
         </ng-container>
 
         <ng-container matColumnDef="download">
@@ -103,7 +109,14 @@
 
         <ng-container matColumnDef="share">
           <th mat-header-cell *matHeaderCellDef> Share </th>
-          <td mat-cell *matCellDef="let element"><mat-icon class="share-btn" [cdkCopyToClipboard]="element['link']">share</mat-icon></td>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon class="share-btn"
+                      [cdkCopyToClipboard]="element['link']"
+                      matTooltip="Copy link to clipboard"
+                      #tooltip="matTooltip"
+                      (click)="tooltip.show()"
+            >share</mat-icon>
+          </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
