@@ -16,12 +16,18 @@ class SpeedTest(models.Model):
 
 # Test unit
 class SpeedTestUnit(models.Model):
+    mode_choice_tuple = (
+        ("download", "download"),
+        ("upload", "upload")
+    )
+
     unit_id = models.fields.AutoField(primary_key=True, editable=False, verbose_name='Unit ID')
     test_id = models.ForeignKey(SpeedTest, on_delete=models.DO_NOTHING, verbose_name='Test ID')
     file = models.fields.TextField(help_text="Data for speed testing", verbose_name="File data", blank=True)
     begin_timestamp = models.fields.DateTimeField(help_text="Timestamp of test beginning", verbose_name='Begin')
     packet_count = models.fields.IntegerField(help_text="Number of packets in test", verbose_name='Packet count')
     packet_number = models.fields.IntegerField(help_text="Order number of packet in test", verbose_name="Packet number")
+    mode = models.fields.CharField(max_length=15, choices=mode_choice_tuple, verbose_name="Method choice")
 
     def __str__(self):
         return f'Test Unit {self.unit_id}'
@@ -54,4 +60,3 @@ class SpeedTestTotalResult(models.Model):
 
     def __str__(self):
         return f'Test Result {self.result_id}'
-
