@@ -56,7 +56,7 @@ class SpeedTestUnitSerializer(ModelSerializer):
             return unit
         elif validated_data['mode'] == 'upload':
             result = SpeedTestResult(
-                unit_id=unit.pk,
+                unit_id=unit.unit_id,
                 duration=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), speed_test.file_size_mb)[0],
                 speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), speed_test.file_size_mb)[1]
             )
