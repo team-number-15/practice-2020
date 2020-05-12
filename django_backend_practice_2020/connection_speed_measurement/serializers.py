@@ -9,6 +9,7 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404
 
 from .utilities import GenerateFile, EvaluateSpeed
+from django_backend_practice_2020.local_configs import KIEV
 
 
 class SpeedTestSerializer(ModelSerializer):
@@ -55,14 +56,14 @@ class SpeedTestUnitSerializer(ModelSerializer):
             return unit
         elif validated_data['mode'] == 'upload':
             result = SpeedTestResult(
-                result_id=validated_data["result_id"],
-                unit_id=validated_data["unit_id"],
-                duration=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(), speed_test.file_size_mb)[0],
-                speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(), speed_test.file_size_mb)[1]
+                unit_id=unit.pk,
+                duration=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), speed_test.file_size_mb)[0],
+                speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), speed_test.file_size_mb)[1]
             )
             result.save()
             return result
-        return unit
+        else:
+            return Response('Wrong input', status=status.HTTP_403_FORBIDDEN)
 
 
 class SpeedTestResultSerializer(ModelSerializer):
