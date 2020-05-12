@@ -38,7 +38,7 @@ class SpeedTestSerializer(ModelSerializer):
 class SpeedTestUnitSerializer(ModelSerializer):
     class Meta:
         model = SpeedTestUnit
-        fields = ['unit_id', 'test_id', 'file', 'begin_timestamp', 'packet_count', 'packet_number']
+        fields = ['unit_id', 'test_id', 'file', 'begin_timestamp', 'packet_count', 'packet_number', 'mode']
 
     def create(self, validated_data):
         speed_test = get_object_or_404(SpeedTest.objects.all(), pk=validated_data['test_id'].test_id)
@@ -62,6 +62,7 @@ class SpeedTestUnitSerializer(ModelSerializer):
             )
             result.save()
             return result
+        return unit
 
 
 class SpeedTestResultSerializer(ModelSerializer):

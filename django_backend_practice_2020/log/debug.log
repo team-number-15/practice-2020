@@ -550,3 +550,253 @@ Not Found: /api/v1/speedtest/total_result_list/1/
 Bad Request: /api/v1/speedtest/total_result_list/
 Not Found: /favicon.ico
 Not Found: /api/v1/speedtest/total_result_lis
+Not Found: /
+Not Found: /robots.txt
+Not Found: /favicon.ico
+Not Found: /api/vi/speedtest
+Not Found: /api/vi/speedtest/speedtest_unit_list
+Not Found: /api/vi/speedtest/speed_test_unit_list
+Unauthorized: /api/v1/speedtest/speed_test_unit_list/
+Unauthorized: /api/v1/speedtest/speed_test_list/
+Not Found: /api/v1/speedtest/
+Method Not Allowed: /api/v1/signup/
+Method Not Allowed: /api/v1/token/
+Method Not Allowed: /api/v1/signup/
+Not Found: /api/v1/speedtest/speed_test_
+Not Found: /api/v1/speedtest/speed_test_unit
+Not Found: /api/v1/speedtest
+Bad Request: /api/v1/speedtest/speed_test_unit_list/
+Not Found: /
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\dima1\Desktop\Практика\practice-2020\django_backend_practice_2020\connection_speed_measurement\serializers.py", line 51, in create
+    mode=validated_data['mode']
+KeyError: 'mode'
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\dima1\Desktop\Практика\practice-2020\django_backend_practice_2020\connection_speed_measurement\serializers.py", line 51, in create
+    mode=validated_data['mode']
+KeyError: 'mode'
+Not Found: /
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\dima1\Desktop\Практика\practice-2020\django_backend_practice_2020\connection_speed_measurement\serializers.py", line 51, in create
+    mode=validated_data['mode']
+KeyError: 'mode'
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\dima1\Desktop\Практика\practice-2020\django_backend_practice_2020\connection_speed_measurement\serializers.py", line 51, in create
+    mode=validated_data['mode']
+KeyError: 'mode'
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\dima1\Desktop\Практика\practice-2020\django_backend_practice_2020\connection_speed_measurement\serializers.py", line 51, in create
+    mode=validated_data['mode']
+KeyError: 'mode'
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\dima1\Desktop\Практика\practice-2020\django_backend_practice_2020\connection_speed_measurement\serializers.py", line 51, in create
+    mode=validated_data['mode']
+KeyError: 'mode'
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\serializers.py", line 214, in save
+    '`create()` did not return an object instance.'
+AssertionError: `create()` did not return an object instance.
+Not Found: /
+Not Found: /
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\dima1\Desktop\Практика\practice-2020\django_backend_practice_2020\connection_speed_measurement\serializers.py", line 51, in create
+    mode=validated_data['mode']
+KeyError: 'mode'
