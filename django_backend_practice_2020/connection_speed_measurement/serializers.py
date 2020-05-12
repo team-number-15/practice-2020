@@ -57,8 +57,8 @@ class SpeedTestUnitSerializer(ModelSerializer):
             result = SpeedTestResult(
                 result_id=validated_data["result_id"],
                 unit_id=validated_data["unit_id"],
-                duration=datetime.now() - unit.begin_timestamp,
-                speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(), speed_test.file_size_mb)
+                duration=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(), speed_test.file_size_mb)[0],
+                speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(), speed_test.file_size_mb)[1]
             )
             result.save()
             return result
