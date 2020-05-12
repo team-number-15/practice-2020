@@ -42,17 +42,18 @@ class SpeedTestUnitSerializer(ModelSerializer):
 
     def create(self, validated_data):
         speed_test = get_object_or_404(SpeedTest.objects.all(), pk=validated_data['test_id'].test_id)
+        unit = SpeedTestUnit(
+            test_id=validated_data['test_id'],
+            file=GenerateFile.generate_big_random_letters(speed_test.file_size_mb),
+            begin_timestamp=datetime.now(),
+            packet_count=validated_data['packet_count'],
+            packet_number=validated_data['packet_number'],
+            mode=validated_data['mode']
+        )
         if validated_data['mode'] == 'download':
-            unit = SpeedTestUnit(
-                test_id=validated_data['test_id'],
-                file=GenerateFile.generate_big_random_letters(speed_test.file_size_mb),
-                begin_timestamp=validated_data['begin_timestamp'],
-                packet_count=validated_data['packet_count'],
-                packet_number=validated_data['packet_number']
-            )
             unit.save()
             return unit
-        else:
+        elif validated_data['mode'] == 'upload':
             result = SpeedTestResult(
                 result_id=validated_data["result_id"],
                 unit_id=validated_data["unit_id"],
