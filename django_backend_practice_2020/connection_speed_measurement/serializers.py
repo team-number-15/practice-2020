@@ -8,7 +8,7 @@ from rest_framework import status
 
 from django.shortcuts import get_object_or_404
 
-from .utilities import GenerateFile
+from .utilities import GenerateFile, EvaluateSpeed
 
 
 class SpeedTestSerializer(ModelSerializer):
@@ -50,15 +50,15 @@ class SpeedTestUnitSerializer(ModelSerializer):
             packet_number=validated_data['packet_number'],
             mode=validated_data['mode']
         )
+        unit.save()
         if validated_data['mode'] == 'download':
-            unit.save()
             return unit
         elif validated_data['mode'] == 'upload':
             result = SpeedTestResult(
                 result_id=validated_data["result_id"],
                 unit_id=validated_data["unit_id"],
-                duration=validated_data["duration"],
-                speed=validated_data["speed"]
+                duration=datetime.now() - unit.begin_timestamp,
+                speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(), speed_test.file_size_mb)
             )
             result.save()
             return result
