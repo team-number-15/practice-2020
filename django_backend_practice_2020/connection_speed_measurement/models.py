@@ -24,7 +24,7 @@ class SpeedTestUnit(models.Model):
     unit_id = models.fields.AutoField(primary_key=True, editable=False, verbose_name='Unit ID')
     test_id = models.ForeignKey(SpeedTest, on_delete=models.DO_NOTHING, verbose_name='Test ID')
     file = models.fields.TextField(help_text="Data for speed testing", verbose_name="File data", blank=True)
-    begin_timestamp = models.fields.DateTimeField(auto_now_add=True, help_text="Timestamp of test beginning",
+    begin_timestamp = models.fields.DateTimeField(help_text="Timestamp of test beginning",
                                                   verbose_name='Begin', blank=True)
     packet_count = models.fields.IntegerField(help_text="Number of packets in test", verbose_name='Packet count')
     packet_number = models.fields.IntegerField(help_text="Order number of packet in test", verbose_name="Packet number")
@@ -39,10 +39,10 @@ class SpeedTestUnit(models.Model):
 class SpeedTestResult(models.Model):
     result_id = models.fields.AutoField(primary_key=True, editable=False, verbose_name='Result ID')
     unit_id = models.ForeignKey(SpeedTestUnit, on_delete=models.DO_NOTHING, verbose_name='Unit ID')
-    duration = models.fields.DurationField(help_text="Time between current timestamp and timestamp of test beginning",
-                                           verbose_name='Duration')
+    duration = models.fields.FloatField(help_text="Time between current timestamp and timestamp of test beginning",
+                                           verbose_name='Duration', blank=True, null=True)
     speed = models.fields.FloatField(help_text="Speed of connection for current test unit in mbit/sec",
-                                     verbose_name='Speed')
+                                     verbose_name='Speed', blank=True, null=True)
 
     def __str__(self):
         return f'Test Result {self.result_id}'

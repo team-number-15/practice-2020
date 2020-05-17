@@ -45,19 +45,23 @@ class SpeedTestUnitSerializer(ModelSerializer):
         speed_test = get_object_or_404(SpeedTest.objects.all(), pk=validated_data['test_id'].test_id)
         unit = SpeedTestUnit(
             test_id=validated_data['test_id'],
-            file=GenerateFile.generate_big_random_letters(speed_test.file_size_mb),
-            begin_timestamp=datetime.now(),
             packet_count=validated_data['packet_count'],
             packet_number=validated_data['packet_number'],
             mode=validated_data['mode']
         )
-        unit.save()
         if validated_data['mode'] == 'download':
+            unit.begin_timestamp = datetime.now(KIEV)
+            unit.file = GenerateFile.generate_big_random_letters(speed_test.file_size_mb)
+            unit.save()
             return unit
         elif validated_data['mode'] == 'upload':
+            unit.begin_timestamp = validated_data["begin_timestamp"],
+            unit.file = validated_data["file"]
+            unit.save()
             result = SpeedTestResult(
-                unit_id=unit.unit_id,
-                duration=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), speed_test.file_size_mb)[0],
+                unit_id=get_object_or_404(SpeedTestUnit.objects.all(), pk=unit.unit_id).pk,
+                duration=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV),
+                                                      speed_test.file_size_mb)[0],
                 speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), speed_test.file_size_mb)[1]
             )
             result.save()
@@ -70,6 +74,19 @@ class SpeedTestResultSerializer(ModelSerializer):
     class Meta:
         model = SpeedTestResult
         fields = ['result_id', 'unit_id', 'duration', 'speed']
+
+    def create(self, validated_data):
+        # speed_test = get_object_or_404(SpeedTest.objects.all(), pk=validated_data['unit_id'])
+        unit = get_object_or_404(SpeedTestUnit.objects.all(), pk=validated_data['unit_id'].unit_id)
+        result = SpeedTestResult(
+            unit_id=validated_data["unit_id"],
+
+            duration=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV),
+                                                  1)[0],
+            speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), 1)[1]
+        )
+        result.save()
+        return result
 
 
 class SpeedTestTotalResultSerializer(ModelSerializer):
