@@ -1,0 +1,5 @@
+- name: install mysql database
+  import_tasks: install_mysql.yml 
+  when: ansible_facts['os_family']|lower == 'redhat'
+  tags:
+    - mysql_provision

@@ -1,0 +1,12 @@
+- name: install tools for continuous deployment
+  import_tasks: install_soft.yml
+  when: ansible_facts['os_family']|lower == 'redhat'
+  tags:
+    - continuous_deployment_provision
+
+
+- name: install jenkins
+  import_tasks: install_jenkins.yml
+  when: ansible_facts['os_family']|lower == 'redhat'
+  tags:
+    - continuous_deployment_provision

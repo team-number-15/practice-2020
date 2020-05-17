@@ -1,0 +1,24 @@
+- name: deploy django application 
+  hosts: deploy
+  roles:
+    - django_deploy
+  tags: 
+    - django_deploy
+
+  
+- name: mysql provision
+  hosts: database
+  become: true
+  roles:
+    - database_provision
+  tags:
+    - mysql_provision
+
+
+- name: jenkins provision 
+  hosts: cd
+  become: true
+  roles:
+    - cd_provision
+  tags:
+    - continuous_deployment_provision
