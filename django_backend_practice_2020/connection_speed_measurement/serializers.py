@@ -69,8 +69,8 @@ class SpeedTestUnitSerializer(ModelSerializer):
                 speed=_speed
             )
             result.save()
-            # return result
-            return unit
+            res_serializer = SpeedTestResultSerializer(result)
+            return Response(res_serializer.data)
         else:
             return Response('Wrong input', status=status.HTTP_403_FORBIDDEN)
 
