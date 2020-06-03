@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SpeedTest, SpeedTestUnit, SpeedTestResult
+from .models import SpeedTest, SpeedTestUnit, SpeedTestResult, SpeedTestTotalResult
 
 
 class SpeedTestAdmin(admin.ModelAdmin):
@@ -20,6 +20,13 @@ class SpeedTestResultAdmin(admin.ModelAdmin):
     search_fields = ('result_id',)
 
 
+class SpeedTestTotalResultAdmin(admin.ModelAdmin):
+    list_display = ('total_result_id', 'test_id', 'tester_id')
+    list_display_links = ('total_result_id',)
+    search_fields = ('total_result_id',)
+
+
 admin.site.register(SpeedTest, SpeedTestAdmin)
 admin.site.register(SpeedTestUnit, SpeedTestUnitAdmin)
 admin.site.register(SpeedTestResult, SpeedTestResultAdmin)
+admin.site.register(SpeedTestTotalResult, SpeedTestTotalResultAdmin)
