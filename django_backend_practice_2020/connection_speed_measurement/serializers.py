@@ -60,14 +60,17 @@ class SpeedTestUnitSerializer(ModelSerializer):
             unit.begin_timestamp = validated_data["begin_timestamp"]
             unit.file = validated_data["file"]
             unit.save()
+
+            _duration, _speed = EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV),
+                                                             speed_test.file_size_mb)
             result = SpeedTestResult(
-                unit_id=SpeedTestUnit.objects.get(begin_timestamp=unit.begin_timestamp, unit_id=unit.pk).unit_id,
-                duration=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV),
-                                                      speed_test.file_size_mb)[0],
-                speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), speed_test.file_size_mb)[1]
+                unit_id=get_object_or_404(SpeedTestUnit.objects.all(), pk=unit.unit_id),
+                duration=_duration,
+                speed=_speed
             )
             result.save()
-            return result
+            # return result
+            return unit
         else:
             return Response('Wrong input', status=status.HTTP_403_FORBIDDEN)
 
@@ -80,12 +83,12 @@ class SpeedTestResultSerializer(ModelSerializer):
     def create(self, validated_data):
         # speed_test = get_object_or_404(SpeedTest.objects.all(), pk=validated_data['unit_id'])
         unit = get_object_or_404(SpeedTestUnit.objects.all(), pk=validated_data['unit_id'].unit_id)
+        _duration, _speed = EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV),
+                                                         1)
         result = SpeedTestResult(
-            unit_id=validated_data["unit_id"],
-
-            duration=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV),
-                                                  1)[0],
-            speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), 1)[1]
+            unit_id=unit,# validated_data["unit_id"],
+            duration=_duration,
+            speed=_speed
         )
         result.save()
         return result

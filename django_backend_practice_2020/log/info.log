@@ -2213,6 +2213,415 @@ Traceback (most recent call last):
     match = datetime_re.match(value)
 TypeError: expected string or bytes-like object
 Unauthorized: /api/v1/speedtest/speed_test_unit_list/
+<<<<<<< HEAD
+Not Found: /favicon.ico
+Not Found: /api/v1/auth/accounts/google/login/callback/
+Method Not Allowed: /api/v1/auth/social/google/
+Not Found: /api/v1/login
+Method Not Allowed: /api/v1/auth/login/
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 24, in perform_create
+    serializer.save()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/serializers.py", line 66, in create
+    speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), speed_test.file_size_mb)[1]
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/base.py", line 482, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/fields/related_descriptors.py", line 219, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "9": "SpeedTestResult.unit_id" must be a "SpeedTestUnit" instance.
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 24, in perform_create
+    serializer.save()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/serializers.py", line 67, in create
+    speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), speed_test.file_size_mb)[1]
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/base.py", line 482, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/fields/related_descriptors.py", line 219, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "10": "SpeedTestResult.unit_id" must be a "SpeedTestUnit" instance.
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 24, in perform_create
+    serializer.save()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/serializers.py", line 69, in create
+    speed=_speed
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/base.py", line 482, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/fields/related_descriptors.py", line 219, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "11": "SpeedTestResult.unit_id" must be a "SpeedTestUnit" instance.
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 20, in create
+    headers = self.get_success_headers(serializer.data)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 562, in data
+    ret = super().data
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/fields.py", line 994, in to_representation
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SpeedTestUnit'
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 20, in create
+    headers = self.get_success_headers(serializer.data)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 562, in data
+    ret = super().data
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/fields.py", line 994, in to_representation
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SpeedTestUnit'
+Not Found: /favicon.ico
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 24, in perform_create
+    serializer.save()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/serializers.py", line 69, in create
+    speed=_speed
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/base.py", line 482, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/fields/related_descriptors.py", line 219, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "14": "SpeedTestResult.unit_id" must be a "SpeedTestUnit" instance.
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/fields/__init__.py", line 1772, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SpeedTest'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 24, in perform_create
+    serializer.save()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/serializers.py", line 46, in create
+    speed_test = get_object_or_404(SpeedTest.objects.all(), pk=validated_data['test_id'])  # validated_data['test_id']  # first correction
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/shortcuts.py", line 76, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/query.py", line 404, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/query.py", line 904, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/query.py", line 923, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1350, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1381, in _add_q
+    check_filterable=check_filterable,
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1311, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1165, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/lookups.py", line 22, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/lookups.py", line 72, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/fields/__init__.py", line 1776, in get_prep_value
+    ) from e
+TypeError: Field 'test_id' expected a number but got <SpeedTest: Speed Test 2>.
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/fields/__init__.py", line 1772, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SpeedTest'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 24, in perform_create
+    serializer.save()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/serializers.py", line 46, in create
+    speed_test = get_object_or_404(SpeedTest.objects.all(), pk=validated_data['test_id']).test_id  # validated_data['test_id']  # first correction
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/shortcuts.py", line 76, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/query.py", line 404, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/query.py", line 904, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/query.py", line 923, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1350, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1381, in _add_q
+    check_filterable=check_filterable,
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1311, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1165, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/lookups.py", line 22, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/lookups.py", line 72, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/fields/__init__.py", line 1776, in get_prep_value
+    ) from e
+TypeError: Field 'test_id' expected a number but got <SpeedTest: Speed Test 2>.
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 24, in perform_create
+    serializer.save()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/serializers.py", line 65, in create
+    speed_test.file_size_mb)
+AttributeError: 'int' object has no attribute 'file_size_mb'
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 24, in perform_create
+    serializer.save()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/serializers.py", line 68, in create
+    speed=_speed
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/base.py", line 482, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/fields/related_descriptors.py", line 219, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "16": "SpeedTestResult.unit_id" must be a "SpeedTestUnit" instance.
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 20, in create
+    headers = self.get_success_headers(serializer.data)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 562, in data
+    ret = super().data
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/fields.py", line 994, in to_representation
+=======
 Not Found: /robots.txt
 Not Found: /favicon.ico
 Unauthorized: /api/v1/speedtest/speed_test_unit_list/
@@ -2840,10 +3249,335 @@ Traceback (most recent call last):
   File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\serializers.py", line 529, in to_representation
     ret[field.field_name] = field.to_representation(attribute)
   File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\rest_framework\fields.py", line 994, in to_representation
+>>>>>>> 9d4fe2116bdd0e1308c470fc8c686ce558f4cb50
     return int(value)
 TypeError: int() argument must be a string, a bytes-like object or a number, not 'SpeedTestUnit'
 Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
 Traceback (most recent call last):
+<<<<<<< HEAD
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 24, in perform_create
+    serializer.save()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/volek/practice2020/django_backend_practice_2020/connection_speed_measurement/serializers.py", line 68, in create
+    speed=_speed
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/base.py", line 482, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/fields/related_descriptors.py", line 219, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "18": "SpeedTestResult.unit_id" must be a "SpeedTestUnit" instance.
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 20, in create
+    headers = self.get_success_headers(serializer.data)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 562, in data
+    ret = super().data
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/fields.py", line 994, in to_representation
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SpeedTestUnit'
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 20, in create
+    headers = self.get_success_headers(serializer.data)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 562, in data
+    ret = super().data
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/fields.py", line 994, in to_representation
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SpeedTestUnit'
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 20, in create
+    headers = self.get_success_headers(serializer.data)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 562, in data
+    ret = super().data
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/fields.py", line 994, in to_representation
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SpeedTestUnit'
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 20, in create
+    headers = self.get_success_headers(serializer.data)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 562, in data
+    ret = super().data
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/fields.py", line 994, in to_representation
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SpeedTestUnit'
+Internal Server Error: /admin/connection_speed_measurement/speedtestunit/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/backends/base/base.py", line 243, in _commit
+    return self.connection.commit()
+sqlite3.IntegrityError: FOREIGN KEY constraint failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/sites.py", line 231, in inner
+    return view(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1720, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1390, in response_action
+    response = func(self, request, queryset)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/actions.py", line 40, in delete_selected
+    modeladmin.delete_queryset(request, queryset)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1091, in delete_queryset
+    queryset.delete()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/query.py", line 722, in delete
+    deleted, _rows_count = collector.delete()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/deletion.py", line 338, in delete
+    sender=model, instance=obj, using=self.using
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/transaction.py", line 232, in __exit__
+    connection.commit()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/backends/base/base.py", line 267, in commit
+    self._commit()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/backends/base/base.py", line 243, in _commit
+    return self.connection.commit()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/backends/base/base.py", line 243, in _commit
+    return self.connection.commit()
+django.db.utils.IntegrityError: FOREIGN KEY constraint failed
+Internal Server Error: /admin/connection_speed_measurement/speedtestunit/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/backends/base/base.py", line 243, in _commit
+    return self.connection.commit()
+sqlite3.IntegrityError: FOREIGN KEY constraint failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/sites.py", line 231, in inner
+    return view(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1720, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1390, in response_action
+    response = func(self, request, queryset)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/actions.py", line 40, in delete_selected
+    modeladmin.delete_queryset(request, queryset)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1091, in delete_queryset
+    queryset.delete()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/query.py", line 722, in delete
+    deleted, _rows_count = collector.delete()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/models/deletion.py", line 338, in delete
+    sender=model, instance=obj, using=self.using
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/transaction.py", line 232, in __exit__
+    connection.commit()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/backends/base/base.py", line 267, in commit
+    self._commit()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/backends/base/base.py", line 243, in _commit
+    return self.connection.commit()
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/db/backends/base/base.py", line 243, in _commit
+    return self.connection.commit()
+django.db.utils.IntegrityError: FOREIGN KEY constraint failed
+Not Found: /
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 20, in create
+    headers = self.get_success_headers(serializer.data)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 562, in data
+    ret = super().data
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/fields.py", line 994, in to_representation
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SpeedTestUnit'
+Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
+Traceback (most recent call last):
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/mixins.py", line 20, in create
+    headers = self.get_success_headers(serializer.data)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 562, in data
+    ret = super().data
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/volek/practice2020/django_backend_practice_2020/django_env/lib/python3.7/site-packages/rest_framework/fields.py", line 994, in to_representation
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SpeedTestUnit'
+=======
   File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
     response = get_response(request)
   File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
@@ -3172,6 +3906,7 @@ Traceback (most recent call last):
   File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\db\models\fields\related_descriptors.py", line 219, in __set__
     self.field.remote_field.model._meta.object_name,
 ValueError: Cannot assign "15": "SpeedTestResult.unit_id" must be a "SpeedTestUnit" instance.
+<<<<<<< HEAD
 Internal Server Error: /api/v1/speedtest/speed_test_unit_list/
 Traceback (most recent call last):
   File "C:\Users\dima1\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
@@ -3466,3 +4201,6 @@ Traceback (most recent call last):
 AttributeError: Got AttributeError when attempting to get a value for field `test_id` on serializer `SpeedTestUnitSerializer`.
 The serializer field might be named incorrectly and not match any attribute or key on the `int` instance.
 Original exception text was: 'int' object has no attribute 'test_id'.
+=======
+>>>>>>> 9d4fe2116bdd0e1308c470fc8c686ce558f4cb50
+>>>>>>> a3ea00d9a9f2ac4cfae0e24a35aa20491439043c
