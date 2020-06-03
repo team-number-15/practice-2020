@@ -47,19 +47,20 @@ class SpeedTestUnitSerializer(ModelSerializer):
             test_id=validated_data['test_id'],
             packet_count=validated_data['packet_count'],
             packet_number=validated_data['packet_number'],
-            mode=validated_data['mode']
+            mode=validated_data['mode'],
         )
         if validated_data['mode'] == 'download':
             unit.begin_timestamp = datetime.now(KIEV)
+            print(unit.begin_timestamp)
             unit.file = GenerateFile.generate_big_random_letters(speed_test.file_size_mb)
             unit.save()
             return unit
         elif validated_data['mode'] == 'upload':
-            unit.begin_timestamp = validated_data["begin_timestamp"],
+            unit.begin_timestamp = validated_data["begin_timestamp"]
             unit.file = validated_data["file"]
             unit.save()
             result = SpeedTestResult(
-                unit_id=get_object_or_404(SpeedTestUnit.objects.all(), pk=unit.unit_id).pk,
+                unit_id=SpeedTestUnit.objects.get(begin_timestamp=unit.begin_timestamp, unit_id=unit.pk).unit_id,
                 duration=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV),
                                                       speed_test.file_size_mb)[0],
                 speed=EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV), speed_test.file_size_mb)[1]
