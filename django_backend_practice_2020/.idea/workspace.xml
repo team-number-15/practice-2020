@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="591c9fbe-6cf8-4c1c-b1db-a894b7b1fefb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/django_backend_practice_2020.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/django_backend_practice_2020.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="591c9fbe-6cf8-4c1c-b1db-a894b7b1fefb" name="Default Changelist" comment="not fixed unit_id error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connection_speed_measurement/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/connection_speed_measurement/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connection_speed_measurement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/connection_speed_measurement/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/connection_speed_measurement/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/connection_speed_measurement/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/info.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +125,26 @@
       <workItem from="1588441110280" duration="360000" />
       <workItem from="1589201224619" duration="7397000" />
       <workItem from="1589225967008" duration="1290000" />
-      <workItem from="1589279684844" duration="4492000" />
+      <workItem from="1589279684844" duration="5455000" />
+      <workItem from="1589298974402" duration="12213000" />
+      <workItem from="1589370766123" duration="1570000" />
+      <workItem from="1589387974867" duration="305000" />
+      <workItem from="1589393503294" duration="5610000" />
+      <workItem from="1589474014914" duration="12000" />
+      <workItem from="1589533008721" duration="2502000" />
+      <workItem from="1589653582670" duration="6520000" />
+      <workItem from="1589725216383" duration="2395000" />
+      <workItem from="1589738466823" duration="781000" />
+      <workItem from="1589910542965" duration="1244000" />
+      <workItem from="1590000967050" duration="49000" />
+      <workItem from="1590152657499" duration="598000" />
+      <workItem from="1590270807981" duration="20000" />
+      <workItem from="1590273476252" duration="23000" />
+      <workItem from="1590408138190" duration="218000" />
+      <workItem from="1590589106323" duration="12000" />
+      <workItem from="1590611792489" duration="40000" />
+      <workItem from="1590869784296" duration="2817000" />
+      <workItem from="1591199942404" duration="10009000" />
     </task>
     <task id="LOCAL-00001" summary="edited serializers.py, created mode field in speedtestunit">
       <created>1589209499852</created>
@@ -109,30 +160,114 @@
       <option name="project" value="LOCAL" />
       <updated>1589215084894</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="edit create method for unit serializer">
+      <created>1589297682230</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589297682230</updated>
+    </task>
+    <task id="LOCAL-00004" summary="evaluate duration and speed in result">
+      <created>1589299253872</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589299253872</updated>
+    </task>
+    <task id="LOCAL-00005" summary="edit evaluating duration and speed in result">
+      <created>1589299774195</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1589299774195</updated>
+    </task>
+    <task id="LOCAL-00006" summary="edit unit test model, and serializers for unit test">
+      <created>1589309420763</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1589309420763</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fixed bug with timezones">
+      <created>1589312752233</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589312752233</updated>
+    </task>
+    <task id="LOCAL-00008" summary="not fixed unit_id error">
+      <created>1589313396006</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1589313396006</updated>
+    </task>
+    <task id="LOCAL-00009" summary="edited upload and download methods in serializers for test unit">
+      <created>1589730111347</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1589730111347</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Time_Zone fixed to UTC again">
+      <created>1591203911489</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1591203911489</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create serializer for SpeedTest model" />
     <MESSAGE value="edited serializers.py, created mode field in speedtestunit" />
     <MESSAGE value="rename data in serializer" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename data in serializer" />
+    <MESSAGE value="edit create method for unit serializer" />
+    <MESSAGE value="evaluate duration and speed in result" />
+    <MESSAGE value="edit evaluating duration and speed in result" />
+    <MESSAGE value="edit unit test model, and serializers for unit test" />
+    <MESSAGE value="fixed bug with timezones" />
+    <MESSAGE value="not fixed unit_id error" />
+    <MESSAGE value="edited upload and download methods in serializers for test unit" />
+    <MESSAGE value="Time_Zone fixed to UTC again" />
+    <option name="LAST_COMMIT_MESSAGE" value="Time_Zone fixed to UTC again" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1032" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588432493530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1032" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588432493530" />
-    <state x="522" y="88" key="CommitChangelistDialog2" timestamp="1589215083730">
+    <state x="522" y="88" key="CommitChangelistDialog2" timestamp="1591203906025">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="522" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589215083730" />
+    <state x="522" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591203906025" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1588432661736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588432661736" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591203971730">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591203971730" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589309427985">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589309427985" />
   </component>
 </project>

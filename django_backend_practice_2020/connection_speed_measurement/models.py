@@ -52,6 +52,7 @@ class SpeedTestResult(models.Model):
 class SpeedTestTotalResult(models.Model):
     total_result_id = models.fields.AutoField(primary_key=True, editable=False, verbose_name='Result ID')
     test_id = models.ForeignKey(SpeedTest, on_delete=models.DO_NOTHING, verbose_name='Test ID')
+    tester_id = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='User ID')
     download_speed = models.fields.FloatField(help_text="Download average speed in mbit/sec",
                                               verbose_name='Download average speed')
     upload_speed = models.fields.FloatField(help_text="Upload average speed in mbit/sec",
@@ -61,4 +62,4 @@ class SpeedTestTotalResult(models.Model):
     expiration_date = models.fields.DateTimeField(verbose_name='Expiration access date')
 
     def __str__(self):
-        return f'Test Result {self.result_id}'
+        return f'Test Result {self.total_result_id}'

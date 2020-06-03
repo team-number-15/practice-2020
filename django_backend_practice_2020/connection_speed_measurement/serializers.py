@@ -10,6 +10,7 @@ from django.shortcuts import get_object_or_404
 
 from .utilities import GenerateFile, EvaluateSpeed
 from django_backend_practice_2020.local_configs import KIEV
+import time
 
 
 class SpeedTestSerializer(ModelSerializer):
@@ -93,7 +94,7 @@ class SpeedTestResultSerializer(ModelSerializer):
 class SpeedTestTotalResultSerializer(ModelSerializer):
     class Meta:
         model = SpeedTestTotalResult
-        fields = ['total_result_id', 'test_id', 'download_speed', 'upload_speed', 'server_name', 'date',
+        fields = ['total_result_id', 'tester_id', 'test_id', 'download_speed', 'upload_speed', 'server_name', 'date',
                   'expiration_date']
 
     def retrieve(self, validated_data):
