@@ -30,7 +30,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="591c9fbe-6cf8-4c1c-b1db-a894b7b1fefb" name="Default Changelist" comment="">
+    <list default="true" id="591c9fbe-6cf8-4c1c-b1db-a894b7b1fefb" name="Default Changelist" comment="logs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -255,25 +255,33 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1032" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588432493530" />
-    <state x="522" y="88" key="CommitChangelistDialog2" timestamp="1591212090141">
+    <state x="522" y="88" key="CommitChangelistDialog2" timestamp="1591212960002">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="522" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591212090141" />
+    <state x="522" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591212960002" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1591213285112">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591213285112" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1588432661736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588432661736" />
-    <state x="685" y="236" key="VCS.ChangeListViewerDialog" timestamp="1591212274981">
+    <state x="92" y="92" width="1736" height="856" key="ShowDiffWithBranchDialog" timestamp="1591213285112">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="685" y="236" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591212274981" />
+    <state x="92" y="92" width="1736" height="856" key="ShowDiffWithBranchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591213285112" />
+    <state x="685" y="236" key="VCS.ChangeListViewerDialog" timestamp="1591212966099">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="685" y="236" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591212966099" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591203971730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591203971730" />
-    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591212671997">
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591212962077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591212671997" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591212962077" />
   </component>
 </project>
