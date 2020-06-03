@@ -30,14 +30,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="591c9fbe-6cf8-4c1c-b1db-a894b7b1fefb" name="Default Changelist" comment="not fixed unit_id error">
+    <list default="true" id="591c9fbe-6cf8-4c1c-b1db-a894b7b1fefb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection_speed_measurement/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/connection_speed_measurement/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection_speed_measurement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/connection_speed_measurement/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection_speed_measurement/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/connection_speed_measurement/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/info.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591203911489</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="logs">
+      <created>1591212093122</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1591212093122</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,28 +247,33 @@
     <MESSAGE value="not fixed unit_id error" />
     <MESSAGE value="edited upload and download methods in serializers for test unit" />
     <MESSAGE value="Time_Zone fixed to UTC again" />
-    <option name="LAST_COMMIT_MESSAGE" value="Time_Zone fixed to UTC again" />
+    <MESSAGE value="logs" />
+    <option name="LAST_COMMIT_MESSAGE" value="logs" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1032" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588432493530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1032" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588432493530" />
-    <state x="522" y="88" key="CommitChangelistDialog2" timestamp="1591203906025">
+    <state x="522" y="88" key="CommitChangelistDialog2" timestamp="1591212090141">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="522" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591203906025" />
+    <state x="522" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591212090141" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1588432661736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588432661736" />
+    <state x="685" y="236" key="VCS.ChangeListViewerDialog" timestamp="1591212274981">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="685" y="236" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591212274981" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591203971730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591203971730" />
-    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589309427985">
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591212671997">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589309427985" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591212671997" />
   </component>
 </project>

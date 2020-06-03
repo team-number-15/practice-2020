@@ -2,4 +2,6 @@ provision/gcp-infrastructure/main/technical-practice-2020-13636bd8f2e4.json
 provision/gcp-infrastructure/main/*.tfstate*
 provision/gcp-infrastructure/main/.terraform/
 env_vars.sh
+django_backend_practice_2020/django_venv/
+
 
