@@ -50,19 +50,4 @@
     permanent: true
     state: enabled
     immediate: true
-
-
-- name: sleep for 30 seconds and continue with play
-  wait_for:  
-    timeout: 30
-
-
-# - name: init password jenkins
-#   shell: cat /var/lib/jenkins/secrets/initialAdminPassword
-#   changed_when: false
-#   register: result
-
-
-# - name: print init password jenkins
-#   debug:
-#     var: result.stdout
+    

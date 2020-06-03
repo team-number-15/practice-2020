@@ -550,3 +550,8 @@ Not Found: /api/v1/speedtest/total_result_list/1/
 Bad Request: /api/v1/speedtest/total_result_list/
 Not Found: /favicon.ico
 Not Found: /api/v1/speedtest/total_result_lis
+Not Found: /favicon.ico
+Not Found: /
+Not Found: /favicon.ico
+Not Found: /api/v1/speedtest/
+Bad Request: /api/v1/speedtest/speed_test_unit_list/

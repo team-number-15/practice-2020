@@ -65,6 +65,9 @@ module "use1-django-server-instance-template" {
   network_self_link  = module.vpc.out_vpc_self_link
   var_public_subnet  = module.vpc.out_use1_public_subnet  
   var_private_subnet = module.vpc.out_use1_private_subnet 
+
+  gcp_ssh_user = var.gcp_ssh_user
+  gcp_ssh_pub_key_file = var.gcp_ssh_pub_key_file
 }
 
 module "euw3-django-server-instance-template" {
@@ -79,6 +82,9 @@ module "euw3-django-server-instance-template" {
   network_self_link  = module.vpc.out_vpc_self_link
   var_public_subnet  = module.vpc.out_euw3_public_subnet  
   var_private_subnet = module.vpc.out_euw3_private_subnet 
+
+  gcp_ssh_user = var.gcp_ssh_user
+  gcp_ssh_pub_key_file = var.gcp_ssh_pub_key_file
 }
 
 # continious delivery server 
@@ -93,6 +99,9 @@ module "CD" {
   var_private_subnet = module.vpc.out_use1_private_subnet 
   var_image          = "centos-cloud/centos-7"
   instance_number    = 1
+
+  gcp_ssh_user = var.gcp_ssh_user
+  gcp_ssh_pub_key_file = var.gcp_ssh_pub_key_file
 }
 
 # database server 
@@ -107,6 +116,9 @@ module "mysql" {
   var_private_subnet = module.vpc.out_euw3_private_subnet 
   var_image          = "centos-cloud/centos-7"
   instance_number    = 1
+
+  gcp_ssh_user = var.gcp_ssh_user
+  gcp_ssh_pub_key_file = var.gcp_ssh_pub_key_file
 }
 
 
