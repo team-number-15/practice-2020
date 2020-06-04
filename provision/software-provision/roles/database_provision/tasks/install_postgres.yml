@@ -1,0 +1,22 @@
+- name: Install and configure postgres
+  yum: 
+    name: "{{ item }}"
+    state: latest
+  become: yes
+  loop:
+    - postgresql-server
+    - postgresql-contrib
+    - postgresql-devel
+    - python-psycopg2
+
+# - name: Run initdb command
+#   raw: postgresql-setup initdb
+#   become: yes
+
+- name: Start and enable postgres
+  systemd: 
+    name: postgresql  
+    enabled: yes 
+    state: started
+  become: yes
+

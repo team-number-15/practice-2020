@@ -1,0 +1,9 @@
+nginx: 
+  http_port: 80
+
+#change
+app:
+  app_name: django_backend_practice_2020
+  app_dir: /home/valentain_sav99_gmail_com/practice2020/{{app_name}}
+  code_repository_url: https://github.com/team-number-15/practice-2020
+  venv_dir: '/home/{{ deployer_user }}/envs/{{ app_name }}'

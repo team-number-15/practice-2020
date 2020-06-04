@@ -1,0 +1,34 @@
+##
+# Clone and pull the repo
+##
+- name: Set up git configuration
+  yum: 
+    name: git 
+    state: latest
+  become: yes
+
+
+- name: Clone or pull the latest code
+  git: 
+    repo: "{{ app.code_repository_url }}"
+    dest: "{{ app.app_dir }}"
+
+##
+# Set up all the dependencies in a virtualenv required by the Django app
+##
+- name: Create a virtualenv directory
+  file: 
+    path: "{{ app.venv_dir }}"
+    state: directory
+
+- name: Install dependencies
+  pip:    
+    requirements: "{{ app.app_dir }}/requirements.txt"
+    virtualenv: "{{ app.venv_dir }}"
+
+- name: Create the .env file for running ad-hoc python commands in our virtualenv
+  template: 
+    src: "env.j2"
+    dest: "{{ app.app_dir }}/.env"
+  become: yes
+

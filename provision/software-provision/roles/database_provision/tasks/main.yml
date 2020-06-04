@@ -1,5 +1,30 @@
-- name: install mysql database
-  import_tasks: install_mysql.yml 
+# - name: install mysql database
+#   import_tasks: install_mysql.yml 
+#   when: ansible_facts['os_family']|lower == 'redhat'
+#   tags:
+#     - mysql_provision
+
+# - name: create mysql user
+#   import_tasks: create_user.yml 
+#   tags:
+#     - mysql_provision
+
+# - name: create db 
+#   import_tasks: create_db.yml
+#   tags:
+#     - mysql_provision
+- name: install postgres 
+  import_tasks: install_postgres.yml 
   when: ansible_facts['os_family']|lower == 'redhat'
   tags:
-    - mysql_provision
+    - postgres_provision
+
+- name: create db 
+  import_tasks: create_db.yml
+  tags:
+    - postgres_provision
+    
+- name: create postgres user
+  import_tasks: create_user.yml 
+  tags:
+    - postgres_provision

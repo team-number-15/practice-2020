@@ -6,6 +6,7 @@
     update_cache: yes
   loop:
     - mysql-server
+    - python2-PyMySQL
 
 
 - name: Enable and Start the mysql Service

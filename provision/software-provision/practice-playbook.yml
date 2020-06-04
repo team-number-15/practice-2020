@@ -4,15 +4,23 @@
     - django_deploy
   tags: 
     - django_deploy
+  handlers:
+    - name: restart nginx
+      systemd: name=nginx state=restarted enabled=yes
+      become: yes
 
   
-- name: mysql provision
+- name: postgres provision
   hosts: database
   become: true
   roles:
     - database_provision
   tags:
-    - mysql_provision
+    - postgres_provision
+  handlers:
+    - name: restart postgres
+      systemd: name=postgresql state=restarted
+      become: yes
 
 
 - name: jenkins provision 
@@ -22,3 +30,5 @@
     - cd_provision
   tags:
     - continuous_deployment_provision
+
+

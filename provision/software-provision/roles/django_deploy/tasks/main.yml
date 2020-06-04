@@ -1,0 +1,14 @@
+- name: install required soft
+  import_tasks: install_soft.yml
+  tags: 
+    - django_deploy
+
+- name: install nginx
+  import_tasks: config_nginx.yml
+  tags: 
+    - django_deploy
+
+- name: deploy app
+  import_tasks: deploy_django.yml
+  tags: 
+    - django_deploy
