@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from .models import SpeedTest, SpeedTestUnit, SpeedTestResult, SpeedTestTotalResult
+from .models import SpeedTest, SpeedTestResult, SpeedTestTotalResult
 
 from rest_framework.serializers import ModelSerializer
 from rest_framework.response import Response
@@ -37,61 +37,76 @@ class SpeedTestSerializer(ModelSerializer):
         return speed_test_instance
 
 
-class SpeedTestUnitSerializer(ModelSerializer):
-    class Meta:
-        model = SpeedTestUnit
-        fields = ['unit_id', 'test_id', 'file', 'begin_timestamp', 'packet_count', 'packet_number', 'mode']
-
-    def create(self, validated_data):
-        speed_test = get_object_or_404(SpeedTest.objects.all(), pk=validated_data['test_id'].test_id)
-        unit = SpeedTestUnit(
-            test_id=validated_data['test_id'],
-            packet_count=validated_data['packet_count'],
-            packet_number=validated_data['packet_number'],
-            mode=validated_data['mode'],
-        )
-        if validated_data['mode'] == 'download':
-            unit.begin_timestamp = datetime.now(KIEV)
-            print(unit.begin_timestamp)
-            unit.file = GenerateFile.generate_big_random_letters(speed_test.file_size_mb)
-            unit.save()
-            return unit
-        elif validated_data['mode'] == 'upload':
-            unit.begin_timestamp = validated_data["begin_timestamp"]
-            unit.file = validated_data["file"]
-            unit.save()
-
-            _duration, _speed = EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV),
-                                                             speed_test.file_size_mb)
-            result = SpeedTestResult(
-                unit_id=get_object_or_404(SpeedTestUnit.objects.all(), pk=unit.unit_id),
-                duration=_duration,
-                speed=_speed
-            )
-            result.save()
-            # return result
-            return unit
-        else:
-            return Response('Wrong input', status=status.HTTP_403_FORBIDDEN)
+# class SpeedTestResultSerializer(ModelSerializer):
+#     class Meta:
+#         model = SpeedTestUnit
+#         fields = ['unit_id', 'test_id', 'file', 'begin_timestamp', 'packet_count', 'packet_number', 'mode']
+#
+#     def create(self, validated_data):
+#         speed_test = get_object_or_404(SpeedTest.objects.all(), pk=validated_data['test_id'].test_id)
+#         unit = SpeedTestUnit(
+#             test_id=validated_data['test_id'],
+#             mode=validated_data['mode'],
+#         )
+#         if validated_data['mode'] == 'download':
+#             unit.begin_timestamp = datetime.now(KIEV)
+#
+#             unit.file = GenerateFile.generate_big_random_letters(speed_test.file_size_mb)
+#             unit.save()
+#             return unit
+#         elif validated_data['mode'] == 'upload':
+#             unit.begin_timestamp = validated_data["begin_timestamp"]
+#             unit.file = validated_data["file"]
+#             unit.save()
+#
+#             _duration, _speed = EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(),
+#                                                              speed_test.file_size_mb)
+#             result = SpeedTestResult(
+#                 unit_id=get_object_or_404(SpeedTestUnit.objects.all(), pk=unit.unit_id),
+#                 duration=_duration,
+#                 speed=_speed
+#             )
+#
+#             result.save()
+#             unit.file = ''
+#             unit.save()
+#             # return result
+#             return unit
+#         else:
+#             return Response('Wrong input', status=status.HTTP_403_FORBIDDEN)
 
 
 class SpeedTestResultSerializer(ModelSerializer):
     class Meta:
         model = SpeedTestResult
-        fields = ['result_id', 'unit_id', 'duration', 'speed']
+        fields = ['result_id', 'test_id', 'file', 'begin_timestamp', 'mode', 'duration', 'speed']
 
     def create(self, validated_data):
-        # speed_test = get_object_or_404(SpeedTest.objects.all(), pk=validated_data['unit_id'])
-        unit = get_object_or_404(SpeedTestUnit.objects.all(), pk=validated_data['unit_id'].unit_id)
-        _duration, _speed = EvaluateSpeed.evaluate_speed(unit.begin_timestamp, datetime.now(KIEV),
-                                                         1)
+        speed_test = get_object_or_404(SpeedTest.objects.all(), pk=validated_data['test_id'].test_id)
         result = SpeedTestResult(
-            unit_id=unit,# validated_data["unit_id"],
-            duration=_duration,
-            speed=_speed
+            test_id=validated_data['test_id'],
+            mode=validated_data['mode'],
         )
-        result.save()
-        return result
+        if validated_data['mode'] == 'download':
+            result.begin_timestamp = datetime.now(KIEV)
+            result.file = GenerateFile.generate_big_random_letters(speed_test.file_size_mb)
+            result.duration = validated_data['duration']
+            result.speed = validated_data['speed']
+            result.save()
+            return result
+        elif validated_data['mode'] == 'upload':
+            result.begin_timestamp = validated_data["begin_timestamp"]
+            _duration, _speed = EvaluateSpeed.evaluate_speed(result.begin_timestamp, datetime.now(KIEV),
+                                                             speed_test.file_size_mb)
+
+            result.file = validated_data["file"]
+            result.duration = _duration
+            result.speed = _speed
+            result.save()
+            # return result
+            return result
+        else:
+            return Response('Wrong input', status=status.HTTP_403_FORBIDDEN)
 
 
 class SpeedTestTotalResultSerializer(ModelSerializer):
@@ -108,3 +123,16 @@ class SpeedTestTotalResultSerializer(ModelSerializer):
             return total_result
 
         return Response('Test results expired', status=status.HTTP_403_FORBIDDEN)
+
+    def create(self, validated_data):
+        total_result = SpeedTestTotalResult(
+            test_id=validated_data['test_id'],
+            tester_id=validated_data['tester_id'],
+            download_speed=validated_data['download_speed'],
+            upload_speed=validated_data['upload_speed'],
+            server_name=validated_data['server_name'],
+            date=validated_data['date'],
+            expiration_date=validated_data['expiration_date']
+        )
+        total_result.save()
+        return total_result
