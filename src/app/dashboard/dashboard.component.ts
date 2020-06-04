@@ -6,6 +6,9 @@ import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-mome
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import * as moment from 'moment';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import {TotalResult} from '../shared/shared.interfaces';
+import {DashboardService} from './dashboard.service';
+import {Router} from '@angular/router';
 
 export interface SavedTestResult {
   testDate: moment.Moment;
@@ -16,50 +19,6 @@ export interface SavedTestResult {
   link: string;
 }
 
-const TEST_RESULTS_DATA: SavedTestResult[] = [
-  {
-    testDate: moment('21/4/2020 12:50', 'D/M/YY HH:mm'),
-    expirationDate: moment('1/5/2020 12:50', 'D/M/YY HH:mm'),
-    download: 43.28,
-    upload: 34.87,
-    server: 'California',
-    link: '/'},
-  {
-    testDate: moment('21/4/2020 12:50', 'D/M/YY HH:mm'),
-    expirationDate: moment('1/5/2020 12:50', 'D/M/YY HH:mm'),
-    download: 12.38,
-    upload: 14.87,
-    server: 'California',
-    link: '/'},
-  {
-    testDate: moment('25/4/2020 12:50', 'D/M/YY HH:mm'),
-    expirationDate: moment('25/4/2020 13:50', 'D/M/YY HH:mm'),
-    download: 32.11,
-    upload: 4.43,
-    server: 'Frankfurt',
-    link: '/'},
-  {
-    testDate: moment('25/4/2020 12:50', 'D/M/YY HH:mm'),
-    expirationDate: moment('25/4/2020 13:50', 'D/M/YY HH:mm'),
-    download: 3.56,
-    upload: 0.98,
-    server: 'Frankfurt',
-    link: '/'},
-  {
-    testDate: moment('25/4/2020 12:50', 'D/M/YY HH:mm'),
-    expirationDate: moment('25/4/2020 13:50', 'D/M/YY HH:mm'),
-    download: 98.54,
-    upload: 87.42,
-    server: 'California',
-    link: '/'},
-  {
-    testDate: moment('2/5/2020 10:43', 'D/M/YY HH:mm'),
-    expirationDate: moment('7/5/2020 10:43', 'D/M/YY HH:mm'),
-    download: 98.54,
-    upload: 87.42,
-    server: 'Frankfurt',
-    link: '/'},
-];
 
 @Component({
   selector: 'app-dashboard',
@@ -72,17 +31,20 @@ const TEST_RESULTS_DATA: SavedTestResult[] = [
 })
 export class DashboardComponent implements OnInit {
 
-  currentTestResults: SavedTestResult[];
+  testResultData: TotalResult[];
+  currentTestResults: TotalResult[];
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  displayedColumns: string[] = ['date', 'expiration-date', 'download', 'upload', 'server', 'share'];
-  dataSource = new MatTableDataSource<SavedTestResult>(this.currentTestResults);
+  displayedColumns: string[] = ['date', 'expiration_date', 'download_speed', 'upload_speed', 'server_name', 'share_id'];
+  dataSource;
 
   notAvailableIn = 'hour';
   speedStatFor = 'all';
   totalTestsDone: number;
   customDate: moment.Moment;
+
+  linkRoot;
 
   topDownload: number;
   topUpload: number;
@@ -92,12 +54,23 @@ export class DashboardComponent implements OnInit {
   almostUnavailableTestsAmount: number;
   test;
 
-  constructor() { }
+  constructor(
+    private dashboard: DashboardService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.currentTestResults = TEST_RESULTS_DATA;
-    this.refreshData();
-    this.test = moment().format('YYYY-MM-DDTHH:mm');
+    this.dashboard.getUserTestResults()
+      .subscribe(results => {
+        this.testResultData = results;
+        this.currentTestResults = this.testResultData;
+        this.dataSource = new MatTableDataSource<TotalResult>(this.currentTestResults);
+        this.refreshData();
+      });
+    // console.log(window.location);
+    this.linkRoot = window.location.href.replace(this.router.url, '').concat('/results');
+    const curMoment = moment();
+    this.test = moment.duration(moment().diff(curMoment.subtract(10, 'seconds'))).seconds();
   }
 
   getTopSpeed(speedData: number[]): number {
@@ -108,18 +81,18 @@ export class DashboardComponent implements OnInit {
     return speedData.length ? speedData.reduce((sum, current) => sum + current) / speedData.length : 0;
   }
 
-  getAvailableResults(data: SavedTestResult[]): SavedTestResult[] {
-    return data.filter(value => moment(value.expirationDate).isAfter(moment()));
+  getAvailableResults(data: TotalResult[]): TotalResult[] {
+    return data.filter(value => moment(value.expiration_date).isAfter(moment()));
   }
 
-  getAlmostUnavailableResults(data: SavedTestResult[], time: string): SavedTestResult[] {
+  getAlmostUnavailableResults(data: TotalResult[], time: string): TotalResult[] {
     if (time === 'hour') {
       return data.filter(value => {
-        moment(value.expirationDate).isBetween(moment(), moment().add(1, 'hour'));
+        return moment(value.expiration_date).isBetween(moment(), moment().add(1, 'hour'));
       });
     } else if (time === 'day') {
       return data.filter(value => {
-        moment(value.expirationDate).isBetween(moment(), moment().add(1, 'day'));
+        return moment(value.expiration_date).isBetween(moment(), moment().add(1, 'day'));
       });
     }
   }
@@ -131,16 +104,16 @@ export class DashboardComponent implements OnInit {
   speedStatSelectChange() {
     switch (this.speedStatFor) {
       case 'all':
-        this.currentTestResults = TEST_RESULTS_DATA;
+        this.currentTestResults = this.testResultData;
         break;
       case 'day':
-        this.currentTestResults = TEST_RESULTS_DATA.filter(value => {
-          moment(value.testDate).isAfter(moment().subtract(1, 'day'));
+        this.currentTestResults = this.testResultData.filter(value => {
+          return moment(value.date).isAfter(moment().subtract(1, 'day'));
         });
         break;
       case 'hour':
-        this.currentTestResults = TEST_RESULTS_DATA.filter(value => {
-          moment(value.testDate).isAfter(moment().subtract(1, 'hour'));
+        this.currentTestResults = this.testResultData.filter(value => {
+          return moment(value.date).isAfter(moment().subtract(1, 'hour'));
         });
         break;
       case 'custom':
@@ -155,21 +128,21 @@ export class DashboardComponent implements OnInit {
     if (event) {
       this.customDate = event.value;
     }
-    this.currentTestResults = TEST_RESULTS_DATA.filter(value => {
-      return moment(value.testDate.startOf('day')).isSame(this.customDate);
+    this.currentTestResults = this.testResultData.filter(value => {
+      return moment(moment(value.date).startOf('day')).isSame(this.customDate);
     });
-    console.log('current', this.currentTestResults);
+    // console.log('current', this.currentTestResults);
     this.refreshData();
   }
 
   refreshData() {
-    console.log(this.currentTestResults);
-    this.dataSource = new MatTableDataSource<SavedTestResult>(this.currentTestResults);
+    // console.log(this.currentTestResults);
+    this.dataSource = new MatTableDataSource<TotalResult>(this.currentTestResults);
     this.totalTestsDone = this.currentTestResults.length;
-    this.topDownload = this.getTopSpeed(this.currentTestResults.map(testResult => testResult.download));
-    this.topUpload = this.getTopSpeed(this.currentTestResults.map(testResult => testResult.upload));
-    this.avgDownload = this.getAverageSpeed(this.currentTestResults.map(testResult => testResult.download));
-    this.avgUpload = this.getAverageSpeed(this.currentTestResults.map(testResult => testResult.upload));
+    this.topDownload = this.getTopSpeed(this.currentTestResults.map(testResult => testResult.download_speed));
+    this.topUpload = this.getTopSpeed(this.currentTestResults.map(testResult => testResult.upload_speed));
+    this.avgDownload = this.getAverageSpeed(this.currentTestResults.map(testResult => testResult.download_speed));
+    this.avgUpload = this.getAverageSpeed(this.currentTestResults.map(testResult => testResult.upload_speed));
 
     this.availableTestsAmount = this.getAvailableResults(this.currentTestResults).length;
     this.unavailableSelectChange();
