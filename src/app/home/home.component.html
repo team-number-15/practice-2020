@@ -1,39 +1,7 @@
-<section id="speed-test" (window:resize)="onResize($event)">
+<section id="speed-test">
   <form class="main-form" [formGroup]="speedTestForm">
-    <div class="gauge-block">
-      <ngx-gauge [type]="gaugeType"
-                 [value]="gaugeValue"
-                 [label]="gaugeLabel"
-                 [append]="gaugeAppendText"
-                 [size]="gaugeSize"
-                 [foregroundColor]="gaugeForeground"
-      >
-      </ngx-gauge>
-      <button
-        class="btn"
-        mat-raised-button
-        color="accent"
-        type="submit"
-        [disabled]="isStartDisabled || speedTestForm.invalid"
-        (click)="startSpeedTest()"
-      >
-        Start
-      </button>
-    </div>
-
     <div class="speed-right">
       <p *ngIf="!isTestStarted" class="test-hint">To start the test you have to choose file size and lifetime of the test.</p>
-      <div class="speed-chart" *ngIf="isTestStarted" [@zoom]="zoom">
-        <canvas
-          baseChart
-          [chartType]="'line'"
-          [datasets]="chartData"
-          [labels]="chartLabels"
-          [options]="chartOptions"
-          [legend]="true"
-          (chartClick)="onChartClick($event)">
-        </canvas>
-      </div>
       <div class="current-stats" *ngIf="isTestStarted" [@zoom]="zoom">
         <mat-card class="current-download">
           <mat-icon> vertical_align_bottom</mat-icon>
@@ -108,7 +76,53 @@
       <div class="ip-block">
         <p class="ip">Your IP:  <strong>{{ clientIpAddress }}</strong></p>
       </div>
+      <mat-progress-bar *ngIf="isStartDisabled" mode="indeterminate"></mat-progress-bar>
+      <button
+        class="btn"
+        mat-raised-button
+        color="accent"
+        type="submit"
+        [disabled]="isStartDisabled || speedTestForm.invalid"
+        (click)="startSpeedTest()"
+      >
+        Start
+      </button>
     </div>
+    <div>
+      <p>Random speed test result, which will be no longer available in:
+        <mat-form-field class="not-available-select">
+          <mat-select [(value)]="notAvailableIn" (valueChange)="unavailableSelectChange()">
+            <mat-option value="hour">an hour</mat-option>
+            <mat-option value="day">a day</mat-option>
+            <mat-option value="week">a week</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+    </div>
+    <section id="total-test-result">
+      <div class="result-wrap">
+        <div class="total-stats">
+          <mat-card class="current-download">
+            <mat-icon> vertical_align_bottom</mat-icon>
+            <div class="stat-field">
+              <p class="stat-label">Download</p>
+              <span>{{ selectedRandomResult.download_speed | number:'1.0-2' }} Mbps</span>
+            </div>
+          </mat-card>
+          <mat-card class="current-upload">
+            <mat-icon> vertical_align_top</mat-icon>
+            <div class="stat-field">
+              <p class="stat-label">Upload</p>
+              <span>{{ selectedRandomResult.upload_speed| number:'1.0-2' }} Mbps</span>
+            </div>
+          </mat-card>
+        </div>
+        <p class="total-stat">Result id: <strong>{{ selectedRandomResult.total_result_id }}</strong></p>
+        <p class="total-stat">Test date: <strong>{{ selectedRandomResult.date | date:'M/d/yy, h:mm a' }}</strong></p>
+        <p class="total-stat">Expiration date: <strong>{{ selectedRandomResult.expiration_date | date:'M/d/yy, h:mm a' }}</strong></p>
+        <p class="total-stat">Server: <strong>{{ selectedRandomResult.server_name }}</strong></p>
+      </div>
+    </section>
   </form>
 
 </section>

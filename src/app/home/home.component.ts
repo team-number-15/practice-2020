@@ -6,6 +6,10 @@ import {animate, animateChild, query, sequence, style, transition, trigger, useA
 import {zoomIn} from 'ng-animate';
 import {IpAddressService} from './ip-address.service';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
+import {SpeedTestService} from './speedtest.service';
+import {IntermediateTest, TestInit, TotalResult, TotalResultResponse} from '../shared/shared.interfaces';
+import {AuthService} from '../auth/auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -32,56 +36,26 @@ export class HomeComponent implements OnInit, AfterViewInit {
   speed: number;
   downloadSpeed: number;
   uploadSpeed: number;
+  notAvailableIn = 'hour';
+
+  randomResults: TotalResultResponse[];
+  filteredRandomResults: TotalResultResponse[];
+  selectedRandomResult: TotalResultResponse = {
+    total_result_id: null,
+    tester_id: null,
+    test_id: null,
+    download_speed: null,
+    upload_speed: null,
+    server_name: null,
+    date: null,
+    expiration_date: null
+  };
 
   snackBarConfig: MatSnackBarConfig = {
     verticalPosition: 'bottom',
     panelClass: ['snack-bar'],
     duration: 2500,
   };
-
-  downloadColor = '#00818a';
-  uploadColor = '#ff6768';
-
-  gaugeType = 'semi';
-  gaugeValue: number | string = 'Connecting';
-  gaugeLabel = '';
-  gaugeAppendText = '';
-  gaugeSize = 280;
-  gaugeForeground = this.downloadColor;
-
-  chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    elements: {
-      point: {
-        radius: 0
-      },
-    },
-    scales: {
-      xAxes: [{
-        display: false
-      }],
-      yAxes: [{
-        display: true
-      }],
-    }
-  };
-
-  chartData = [{
-      data: [],
-      label: 'Download',
-      borderColor: '#00818a',
-      backgroundColor: 'rgba(0,129,138, 0.5)',
-    },
-    {
-      data: [],
-      label: 'Upload',
-      borderColor: '#ff6768',
-      backgroundColor: 'rgb(255,103,104, 0.5)'
-    },
-  ];
-
-  chartLabels = [];
 
   speedTestForm = this.fb.group({
     server: ['any'],
@@ -97,6 +71,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private ip: IpAddressService,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
+    private authService: AuthService,
+    private speedTestService: SpeedTestService,
   ) { }
 
   ngOnInit(): void {
@@ -107,102 +83,87 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (this.authSuccess) {
       this.snackBar.open('Login succeeded', 'Dismiss', this.snackBarConfig);
     }
-    this.breakpointObserver
-      .observe(['(max-width: 491px)'])
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          this.gaugeSize = 200;
-          this.chartOptions.scales.yAxes[0].display = false;
-        } else {
-          this.gaugeSize = 280;
-          this.chartOptions.scales.yAxes[0].display = false;
-        }
-      });
+    this.unavailableSelectChange();
   }
 
   ngAfterViewInit(): void {
   }
 
-  onChartClick(event) {
-    console.log(event);
-  }
-
-  randomValue(chartDataIndex: number) {
-    const timer = setInterval(() => {
-      this.speed = +(Math.random() * 100).toFixed(1);
-      console.log(this.speed);
-      this.gaugeValue = this.speed;
-      this.chartData[chartDataIndex].data.push(this.speed);
-      if (chartDataIndex === 0) {
-        this.chartLabels.push('');
-      }
-    }, 100);
-    // setTimeout(() => {
-    //   clearInterval(timer);
-    //   const currentSpeedData = this.chartData[0].data;
-    //   this.downloadSpeed = currentSpeedData.reduce((sum, curr) => sum + curr) / currentSpeedData.length;
-    //   this.isStartDisabled = false;
-    //   // this.router.navigate(['/results'], {
-    //   // });
-    // }, 10000);
-    return new Promise(resolve => {
-      setTimeout(() => {
-        clearInterval(timer);
-        const currentSpeedData = this.chartData[chartDataIndex].data;
-        if (chartDataIndex === 0) {
-          this.downloadSpeed = currentSpeedData.reduce((sum, curr) => sum + curr) / currentSpeedData.length;
-        } else if (chartDataIndex === 1) {
-          this.uploadSpeed = currentSpeedData.reduce((sum, curr) => sum + curr) / currentSpeedData.length;
-        }
-        // this.isStartDisabled = false;
-        resolve();
-        // this.router.navigate(['/results'], {
-        // });
-      }, 10000);
-    });
-  }
-
   startSpeedTest() {
-    this.gaugeLabel = 'Connecting...';
     this.isTestStarted = false;
-    this.gaugeValue = 0;
     this.isStartDisabled = true;
-    const speedTestProm = new Promise(resolve => {
-      setTimeout(() => {
-        resolve();
-      }, 4000);
-    });
+    this.isTestStarted = true;
 
-    speedTestProm.then(() => {
-      this.isTestStarted = true;
-      this.gaugeLabel = 'Speed';
-      this.gaugeAppendText = 'Mbps';
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve(this.randomValue(0));
-        }, 800);
+    const speedTestInit: TestInit = {
+      tester: this.authService.currentUser.pk,
+      file_size_mb: this.speedTestForm.get('fileSize').value,
+    };
+    this.speedTestService.startSpeedTest(speedTestInit)
+      .subscribe(() => {
+        const testUnit: IntermediateTest = {
+          test_id: this.speedTestService.currentTest.test_id,
+          file: '',
+          begin_timestamp: null,
+          mode: 'download',
+          duration: null,
+          speed: null
+        };
+        this.speedTestService.downloadSpeedMeasurement(testUnit)
+          .subscribe(downloadUnitResponse => {
+            const duration = moment.duration(moment().diff(moment(downloadUnitResponse.begin_timestamp)
+                              .format('YYYY-MM-DDTHH:mm:ssZ'))).asSeconds();
+            this.downloadSpeed = ((this.speedTestService.currentTest.file_size) / duration) * 8;
+
+            this.speedTestService.currentTestFile = downloadUnitResponse.file;
+          },
+            error => console.log(error),
+            () => {
+              const uploadUnit: IntermediateTest = {
+                test_id: this.speedTestService.currentTest.test_id,
+                file: this.speedTestService.currentTestFile,
+                begin_timestamp: moment().format('YYYY-MM-DDTHH:mm:ssZ'),
+                mode: 'upload',
+                duration: null,
+                speed: null
+              };
+              this.speedTestService.UploadSpeedMeasurement(uploadUnit)
+                .subscribe(uploadUnitResponse => {
+                  this.uploadSpeed = uploadUnitResponse.speed;
+                },
+                  error => console.log(error),
+                  () => {
+                    const testRes: TotalResult = {
+                      tester_id: this.authService.currentUser.pk,
+                      test_id: this.speedTestService.currentTest.test_id,
+                      download_speed: +this.downloadSpeed.toFixed(2),
+                      upload_speed: +this.uploadSpeed.toFixed(2),
+                      server_name: this.speedTestForm.get('server').value,
+                      date: this.speedTestService.testBeginDate,
+                      expiration_date: this.timeTypeSelect(this.speedTestService.testBeginDate)
+                                            .format('YYYY-MM-DDTHH:mm:ssZ')
+                    };
+                    this.speedTestService.sendTotalResults(testRes)
+                      .subscribe(respond => {
+                        console.log('total result id:', respond.total_result_id);
+                        this.router.navigate(['/results', respond.total_result_id]);
+                      },
+                        error => console.log(error)
+                      );
+                  });
+            });
       });
-    }).then(value => value)
-      .then(() => {
-      this.gaugeValue = 0;
-      // this.gaugeForeground = this.uploadColor;
-      return new Promise(resolve => {
-        setTimeout(() => {
-          this.gaugeForeground = this.uploadColor;
-          resolve(this.randomValue(1));
-        }, 1500);
-      });
-      // return this.randomValue(1);
-    }).then(value => {
-      return value;
-    }).then(() => {
-      this.gaugeValue = 0;
-      this.gaugeForeground = this.downloadColor;
-      this.isStartDisabled = false;
-      setTimeout(() => {
-        this.router.navigate(['/results']);
-      }, 1100);
-    });
+  }
+
+  timeTypeSelect(begin): moment.Moment {
+    let expirationDate: moment.Moment;
+    if (this.speedTestForm.get('timeType').value === 'hours') {
+      expirationDate = moment(begin).add(this.speedTestForm.get('lifetime').value, 'hours');
+    } else if (this.speedTestForm.get('timeType').value === 'days') {
+      expirationDate = moment(begin).add(this.speedTestForm.get('lifetime').value, 'days');
+    } else {
+      expirationDate = moment(begin).add(this.speedTestForm.get('lifetime').value, 'weeks');
+    }
+    return expirationDate;
   }
 
   getIP() {
@@ -212,18 +173,44 @@ export class HomeComponent implements OnInit, AfterViewInit {
       });
   }
 
-  @HostListener('window.resize', ['$event'])
-  onResize(event) {
-    this.breakpointObserver
-      .observe(['(max-width: 491px)'])
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          this.gaugeSize = 200;
-          this.chartOptions.scales.yAxes[0].display = false;
-        } else {
-          this.gaugeSize = 280;
-          this.chartOptions.scales.yAxes[0].display = true;
-        }
+  getAlmostUnavailableResults(data: TotalResultResponse[], time: string): TotalResultResponse[] {
+    if (time === 'hour') {
+      return data.filter(value => {
+        return moment(value.expiration_date).isBetween(moment(), moment().add(1, 'hour'));
       });
+    } else if (time === 'day') {
+      return data.filter(value => {
+        return moment(value.expiration_date).isBetween(moment(), moment().add(1, 'day'));
+      });
+    } else if (time === 'week') {
+      return data.filter(value => {
+        return moment(value.expiration_date).isBetween(moment(), moment().add(1, 'week'));
+      });
+    }
+  }
+
+  unavailableSelectChange() {
+    this.speedTestService.getTotalResults().subscribe(response => {
+        this.randomResults = response;
+      // tslint:disable-next-line:no-unused-expression
+        this.filteredRandomResults = this.getAlmostUnavailableResults(this.randomResults, this.notAvailableIn);
+        const randomIndex = Math.floor(Math.random() * Math.floor(this.filteredRandomResults.length));
+        console.log(this.filteredRandomResults);
+        console.log(randomIndex);
+        if (this.filteredRandomResults.length) {
+          this.selectedRandomResult = this.filteredRandomResults[randomIndex];
+        } else {
+          this.selectedRandomResult = {
+            total_result_id: null,
+            tester_id: null,
+            test_id: null,
+            download_speed: null,
+            upload_speed: null,
+            server_name: null,
+            date: null,
+            expiration_date: null
+          };
+        }
+    });
   }
 }
