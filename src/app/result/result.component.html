@@ -5,22 +5,27 @@
         <mat-icon> vertical_align_bottom</mat-icon>
         <div class="stat-field">
           <p class="stat-label">Download</p>
-          <span>{{ download | number:'1.0-2' }} Mbps</span>
+          <span>{{ resultData.download_speed | number:'1.0-2' }} Mbps</span>
         </div>
       </mat-card>
       <mat-card class="current-upload">
         <mat-icon> vertical_align_top</mat-icon>
         <div class="stat-field">
           <p class="stat-label">Upload</p>
-          <span>{{ upload | number:'1.0-2' }} Mbps</span>
+          <span>{{ resultData.upload_speed| number:'1.0-2' }} Mbps</span>
         </div>
       </mat-card>
     </div>
-    <p class="total-stat">Result id: <strong>12343234</strong></p>
-    <p class="total-stat">Test date: <strong></strong></p>
-    <p class="total-stat">Expiration date: <strong></strong></p>
-    <p class="total-stat">Server: <strong>South Carolina</strong></p>
-    <button mat-button color="accent" class="btn"><mat-icon>share</mat-icon> Share</button>
+    <p class="total-stat">Result id: <strong>{{ resultData.total_result_id }}</strong></p>
+    <p class="total-stat">Test date: <strong>{{ resultData.date | date:'M/d/yy, h:mm a' }}</strong></p>
+    <p class="total-stat">Expiration date: <strong>{{ resultData.expiration_date | date:'M/d/yy, h:mm a' }}</strong></p>
+    <p class="total-stat">Server: <strong>{{ resultData.server_name }}</strong></p>
+    <button
+      mat-button color="accent"
+      class="btn"
+      matTooltip="Press to copy the result link"
+      [cdkCopyToClipboard]="resultLink"
+    ><mat-icon>share</mat-icon> Share</button>
   </div>
 </section>
 

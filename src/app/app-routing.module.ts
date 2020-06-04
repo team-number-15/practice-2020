@@ -8,16 +8,17 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {RegisterComponent} from './register/register.component';
 import {ResultComponent} from './result/result.component';
 import {AuthGuardService} from './auth/auth-guard.service';
+import {ResultGuardService} from './result/result-guard.service';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, data: {animation: 'HomePage'}},
+  {path: '', component: HomeComponent, data: {animation: 'HomePage'}, canActivate: [AuthGuardService]},
   {path: 'about', component: AboutComponent},
   {path: 'login', component: AuthComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   // {path: 'results/:id', component: ResultComponent},
-  {path: 'results', component: ResultComponent, data: {animation: 'ResultPage'}},
+  {path: 'results/:id', component: ResultComponent, data: {animation: 'ResultPage'}, canActivate: [ResultGuardService]},
   {path: 'error', component: ErrorPageComponent},
   {path: '**', redirectTo: '/error'}
 ];

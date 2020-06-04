@@ -4,7 +4,7 @@
 <form class="auth-form" [formGroup]="authForm" (ngSubmit)="authSubmit()">
   <mat-form-field class="form-field">
     <mat-label>Login</mat-label>
-    <input matInput placeholder="Login..." formControlName="login" required [errorStateMatcher]="matcher">
+    <input matInput placeholder="Login..." autocomplete="off" formControlName="login" required [errorStateMatcher]="matcher">
     <mat-error *ngIf="authForm.get('login').hasError('required')">
       Login is <strong>required</strong>
     </mat-error>

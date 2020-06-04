@@ -17,6 +17,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 const modules = [
@@ -36,6 +37,7 @@ const modules = [
   MatExpansionModule,
   MatTooltipModule,
   MatDatepickerModule,
+  MatProgressBarModule,
   ClipboardModule,
 ];
 
