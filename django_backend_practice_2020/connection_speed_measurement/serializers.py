@@ -10,7 +10,6 @@ from django.shortcuts import get_object_or_404
 
 from .utilities import GenerateFile, EvaluateSpeed
 from django_backend_practice_2020.local_configs import KIEV
-import time
 
 
 class SpeedTestSerializer(ModelSerializer):
@@ -93,6 +92,7 @@ class SpeedTestResultSerializer(ModelSerializer):
             result.duration = validated_data['duration']
             result.speed = validated_data['speed']
             result.save()
+
             return result
         elif validated_data['mode'] == 'upload':
             result.begin_timestamp = validated_data["begin_timestamp"]

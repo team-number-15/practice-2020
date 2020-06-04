@@ -27,5 +27,3 @@ class SpeedTestResultViewSet(ModelViewSet):
 class SpeedTestTotalResultViewSet(ModelViewSet):
     queryset = SpeedTestTotalResult.objects.all()
     serializer_class = SpeedTestTotalResultSerializer
-
-
