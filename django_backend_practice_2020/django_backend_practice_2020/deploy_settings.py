@@ -150,7 +150,7 @@ WSGI_APPLICATION = 'django_backend_practice_2020.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES['default'] = env.db("DATABASE_URL")
+DATABASES['default'] = os.environ["DATABASE_URL"]
 
 # CELERY_BROKER_URL = 'redis://localhost:6379'
 # CELERY_RESULT_BACKEND = 'redis://localhost:6379'
