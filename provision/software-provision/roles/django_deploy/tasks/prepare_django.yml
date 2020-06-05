@@ -7,6 +7,10 @@
     state: latest
   become: yes
 
+- name: Remove old project directory
+  file:
+    path: "{{ app.repo_dir }}"
+    state: absent
 
 - name: Clone or pull the latest code
   git: 

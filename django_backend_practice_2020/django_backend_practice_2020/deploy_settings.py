@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import datetime
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -150,8 +151,8 @@ WSGI_APPLICATION = 'django_backend_practice_2020.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES['default'] = os.environ["DATABASE_URL"]
-
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(default=os.environ["DATABASE_URL"])
 # CELERY_BROKER_URL = 'redis://localhost:6379'
 # CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 # CELERY_ACCEPT_CONTENT = ['application/json']
@@ -184,12 +185,12 @@ LOGGING = {
         'info_file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': 'log//info.log',
+            'filename': '//home//valentain_sav99_gmail_com//practice2020//django_backend_practice_2020//log//info.log',
         },
         'debug_file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'log//debug.log',
+            'filename': '//home//valentain_sav99_gmail_com//practice2020//django_backend_practice_2020//log//debug.log',
         },
     },
     'loggers': {
