@@ -22,3 +22,6 @@ variable "var_private_subnet" {}
 
 variable "network_self_link" {}
 
+variable "gcp_ssh_user" {}
+
+variable "gcp_ssh_pub_key_file" {}

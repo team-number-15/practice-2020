@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3f1703f6-5a74-495b-8f51-debe979ad5b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/inventory.ini" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/inventory.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/practice-playbook.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/practice-playbook.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/cd_provision/tasks/install_soft.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/cd_provision/tasks/install_soft.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/install_mysql.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/install_mysql.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/main.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/django_deploy/tasks/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/django_deploy/tasks/main.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1auV8LUWeXinVHinaAq9K7Xl6Wc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nyanya_project/hiring_page/models.py" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager" selected="Python.EvaluateSpeed">
+    <configuration name="EvaluateSpeed" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="practice2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/django_backend_practice_2020/connection_speed_measurement/utilities" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/django_backend_practice_2020/connection_speed_measurement/utilities/EvaluateSpeed.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GenerateFile" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="practice2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/django_backend_practice_2020/connection_speed_measurement/utilities" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/django_backend_practice_2020/connection_speed_measurement/utilities/GenerateFile.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.EvaluateSpeed" />
+        <item itemvalue="Python.GenerateFile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f1703f6-5a74-495b-8f51-debe979ad5b8" name="Default Changelist" comment="" />
+      <created>1587585304628</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587585304628</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587585368415">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1587585368415" />
+    <state x="656" y="355" width="598" height="398" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588108159590">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="656" y="355" width="598" height="398" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1588108159590" />
+    <state x="378" y="516" width="424" height="486" key="FileChooserDialogImpl" timestamp="1587763172046">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="378" y="516" width="424" height="486" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1587763172046" />
+    <state width="1897" height="83" key="GridCell.Tab.0.bottom" timestamp="1588626952514">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="83" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1588626952514" />
+    <state width="1897" height="83" key="GridCell.Tab.0.center" timestamp="1588626952513">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="83" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1588626952513" />
+    <state width="1897" height="83" key="GridCell.Tab.0.left" timestamp="1588626952512">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="83" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1588626952512" />
+    <state width="1897" height="83" key="GridCell.Tab.0.right" timestamp="1588626952514">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="83" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1588626952514" />
+    <state x="449" y="188" width="1022" height="732" key="SettingsEditor" timestamp="1588444339122">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="449" y="188" width="1022" height="732" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1588444339122" />
+  </component>
+</project>

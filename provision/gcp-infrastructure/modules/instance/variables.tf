@@ -17,3 +17,7 @@ variable "var_private_subnet" {}
 variable "var_image" {}
 
 variable "instance_number" {}
+
+variable "gcp_ssh_user" {}
+
+variable "gcp_ssh_pub_key_file" {}

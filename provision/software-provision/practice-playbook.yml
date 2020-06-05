@@ -1,0 +1,43 @@
+- name: deploy django application 
+  hosts: deploy
+  roles:
+    - django_deploy
+  tags: 
+    - django_deploy
+  handlers:
+    - name: restart nginx
+      systemd: 
+        name: nginx  
+        state: restarted 
+        enabled: yes
+      become: yes
+    - name: restart app
+      systemd: 
+        name: django-practice
+        state: restarted 
+        enabled: yes
+      become: yes
+
+
+- name: postgres provision
+  hosts: database
+  become: true
+  roles:
+    - database_provision
+  tags:
+    - postgres_provision
+  handlers:
+    - name: restart postgres
+      systemd: name=postgresql state=restarted
+      become: yes
+
+
+- name: jenkins provision 
+  hosts: cd
+  become: true
+  roles:
+    - cd_provision
+  tags:
+    - continuous_deployment_provision
+
+

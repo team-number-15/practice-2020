@@ -1,0 +1,53 @@
+- name: Correct the alternatives to change default Java version.
+  alternatives:
+    name: java
+    link: /bin/java
+    path: "{{java.ALTERNATIVES}}"
+
+
+- name: Download Jenkins repo yum URL for  
+  get_url:
+    url: "{{jenkins.repo_URL}}"
+    dest: /etc/yum.repos.d/jenkins.repo
+  become: true
+
+
+- name: Import GPG Key
+  rpm_key:
+    state: present
+    key: "{{jenkins.gpg_key}}"
+    validate_certs: yes
+
+
+- name: install jenkins
+  become: true
+  yum:
+    name: jenkins
+    update_cache: yes
+    state: present
+
+
+- name: Change Jenkins JAVA options
+  lineinfile: 
+    path: /etc/sysconfig/jenkins
+    regexp: ^JENKINS_JAVA_OPTIONS=
+    line: JENKINS_JAVA_OPTIONS="{{jenkins.JAVA_OPTIONS}}"
+  become: true
+
+
+- name: Enable and Start the Jenkins Service
+  become: true
+  systemd:
+    name: jenkins
+    enabled: yes
+    state: started
+
+
+- name: Open Firewall Port
+  firewalld:
+    zone: public
+    port: 8080/tcp
+    permanent: true
+    state: enabled
+    immediate: true
+    

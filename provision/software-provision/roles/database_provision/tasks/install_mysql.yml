@@ -1,0 +1,17 @@
+- name: install mysql database
+  become: true
+  yum:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - mysql-server
+    - python2-PyMySQL
+
+
+- name: Enable and Start the mysql Service
+  become: true
+  service:
+    name: mysql
+    enabled: yes
+    state: started

@@ -1,0 +1,30 @@
+# - name: Removes anonymous user account for localhost
+#   mysql_user:
+#     name: ''
+#     host: localhost
+#     state: absent
+
+# - name: Removes all anonymous user accounts
+#   mysql_user:
+#     name: ''
+#     host_all: yes
+#     state: absent
+
+# - name: Create database user with all database privileges
+#   mysql_user:
+#     name: django_user
+#     password: 'DfkbrGbljhfc123'
+#     priv: '*.*:ALL,GRANT'
+#     state: present
+
+- name: Configure a new postgresql user
+  postgresql_user: 
+    db: "{{ app.app_name }}"
+    name: "{{ db.db_user }}"
+    password: "{{ db.db_password }}"
+    priv: "ALL"
+    role_attr_flags: "NOSUPERUSER"
+  become: yes
+  become_user: postgres
+  notify:
+    - restart postgres

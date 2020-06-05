@@ -3,5 +3,5 @@ provision/gcp-infrastructure/main/*.tfstate*
 provision/gcp-infrastructure/main/.terraform/
 env_vars.sh
 django_backend_practice_2020/django_venv/
-
+provision/gcp-infrastructure/main/gcp_ce*
 

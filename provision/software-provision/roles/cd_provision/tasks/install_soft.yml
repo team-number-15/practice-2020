@@ -1,0 +1,14 @@
+- name: install required soft
+  become: true
+  yum:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+    enablerepo: epel
+  loop:
+    - wget
+    - "{{java.VERSION}}"
+    - python3 
+    - ansible
+    - git
+    - vim

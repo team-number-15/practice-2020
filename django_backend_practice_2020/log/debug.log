@@ -550,6 +550,7 @@ Not Found: /api/v1/speedtest/total_result_list/1/
 Bad Request: /api/v1/speedtest/total_result_list/
 Not Found: /favicon.ico
 Not Found: /api/v1/speedtest/total_result_lis
+<<<<<<< HEAD
 Not Found: /
 Not Found: /robots.txt
 Not Found: /favicon.ico
@@ -4440,3 +4441,10 @@ Traceback (most recent call last):
     duration = (end - begin).total_seconds()
 TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'NoneType'
 >>>>>>> b92b711c22a6d5791eeea60e8b4013c383f9d478
+=======
+Not Found: /favicon.ico
+Not Found: /
+Not Found: /favicon.ico
+Not Found: /api/v1/speedtest/
+Bad Request: /api/v1/speedtest/speed_test_unit_list/
+>>>>>>> feature/CD
