@@ -6,10 +6,19 @@
     - django_deploy
   handlers:
     - name: restart nginx
-      systemd: name=nginx state=restarted enabled=yes
+      systemd: 
+        name: nginx  
+        state: restarted 
+        enabled: yes
+      become: yes
+    - name: restart app
+      systemd: 
+        name: django-practice
+        state: restarted 
+        enabled: yes
       become: yes
 
-  
+
 - name: postgres provision
   hosts: database
   become: true

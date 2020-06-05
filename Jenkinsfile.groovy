@@ -21,27 +21,21 @@ node(){
     //         url: 'https://github.com/Volektyn/spring-boot']]])
     // }
     
-    // stage("PRE_DEPLOY"){
-    //     if (fileExists(APP_DIR)){
-    //         dir(APP_DIR){
-    //             deleteDir()
-    //         }
-    //     }
+    stage("PRE_DEPLOY"){
+        if (fileExists(APP_DIR)){
+            dir(APP_DIR){
+                deleteDir()
+            }
+        }
 
-    //     sh "git clone https://github.com/team-number-15/practice-2020"
+        sh "git clone https://github.com/team-number-15/practice-2020"
 
-    //     sh "cd ${APP_DIR}"
-    // }
+        sh "cd ${APP_DIR}"
+    }
     
     stage("DEPLOY"){
-        // sh 'virtualenv env -p python3.5'
-        // sh '. env/bin/activate'
-        // sh 'env/bin/pip install -r requirements.txt'
-
-
-            // DEPLOY TO QA & CI
-        sh "ansible-playbook GW/ansible_deploy/deploy-playbook.yml -i GW/ansible_deploy/inventory.ini \
+        sh "ansible-playbook  provision/software-provision/practice-playbook.yml -i provision/software-provision/inventory.ini \
             -l deploy \
-            -u ec2-user ${environment_vars} -t simple_deploy"
+            -t django_deploy"
     }
 }

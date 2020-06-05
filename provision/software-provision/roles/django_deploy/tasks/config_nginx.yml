@@ -1,3 +1,6 @@
+##
+# Configure nginx web server
+##
 - name: Install nginx
   yum: 
     name: nginx 
@@ -12,5 +15,4 @@
   become: yes
   notify:
     - restart nginx
-
 

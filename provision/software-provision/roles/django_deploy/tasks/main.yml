@@ -1,14 +1,22 @@
-- name: install required soft
-  import_tasks: install_soft.yml
+# - name: install required soft
+#   import_tasks: install_soft.yml
+#   tags: 
+#     - django_deploy
+
+- name: get django app
+  import_tasks: prepare_django.yml
   tags: 
     - django_deploy
 
-- name: install nginx
+- name: config nginx
   import_tasks: config_nginx.yml
   tags: 
     - django_deploy
 
-- name: deploy app
-  import_tasks: deploy_django.yml
+- name: config gunicorn
+  import_tasks: config_gunicorn.yml
   tags: 
     - django_deploy
+
+- name: systemd for gunicorn_start.sh
+  import_tasks: gunicorn_daemon.yml

@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f1703f6-5a74-495b-8f51-debe979ad5b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_backend_practice_2020/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/django_backend_practice_2020/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_backend_practice_2020/log/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/django_backend_practice_2020/log/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_backend_practice_2020/log/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/django_backend_practice_2020/log/info.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/gcp-infrastructure/main/main.tf" beforeDir="false" afterPath="$PROJECT_DIR$/provision/gcp-infrastructure/main/main.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/gcp-infrastructure/main/variables.tf" beforeDir="false" afterPath="$PROJECT_DIR$/provision/gcp-infrastructure/main/variables.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/global/vpc.tf" beforeDir="false" afterPath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/global/vpc.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/instance-template/instance_template.tf" beforeDir="false" afterPath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/instance-template/instance_template.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/instance-template/variables.tf" beforeDir="false" afterPath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/instance-template/variables.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/instance/instance.tf" beforeDir="false" afterPath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/instance/instance.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/instance/variables.tf" beforeDir="false" afterPath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/instance/variables.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/inventory.ini" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/inventory.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/practice-playbook.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/practice-playbook.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/cd_provision/tasks/install_soft.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/cd_provision/tasks/install_soft.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/install_mysql.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/install_mysql.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/main.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/django_deploy/tasks/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/django_deploy/tasks/main.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
