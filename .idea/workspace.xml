@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f1703f6-5a74-495b-8f51-debe979ad5b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/software-provision/inventory.ini" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/inventory.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/software-provision/practice-playbook.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/practice-playbook.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/cd_provision/tasks/install_soft.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/cd_provision/tasks/install_soft.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/install_mysql.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/install_mysql.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/database_provision/tasks/main.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provision/software-provision/roles/django_deploy/tasks/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/provision/software-provision/roles/django_deploy/tasks/main.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_backend_practice_2020/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/django_backend_practice_2020/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/global/vpc.tf" beforeDir="false" afterPath="$PROJECT_DIR$/provision/gcp-infrastructure/modules/global/vpc.tf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +31,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nyanya_project/hiring_page/models.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nyanya_project" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.EvaluateSpeed">
@@ -111,10 +106,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="656" y="355" width="598" height="398" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1588108159590" />
-    <state x="378" y="516" width="424" height="486" key="FileChooserDialogImpl" timestamp="1587763172046">
+    <state x="378" y="516" width="424" height="486" key="FileChooserDialogImpl" timestamp="1593625575930">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="378" y="516" width="424" height="486" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1587763172046" />
+    <state x="378" y="516" width="424" height="486" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1593625575930" />
     <state width="1897" height="83" key="GridCell.Tab.0.bottom" timestamp="1588626952514">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
